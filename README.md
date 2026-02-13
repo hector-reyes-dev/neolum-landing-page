@@ -1,43 +1,51 @@
-# Astro Starter Kit: Minimal
+# NEO LUM - Landing Page
+
+Landing page institucional para NEO LUM, agencia especializada en estrategia, identidad y crecimiento de marca para pymes.
+
+## 🚀 Tecnologias
+
+- **Astro** - Framework web moderno
+- **Tailwind CSS** - Estilos utilitarios
+- **TypeScript** - Tipado estatico
+
+## 🛠️ Comandos
 
 ```sh
-npm create astro@latest -- --template minimal
+pnpm install
+pnpm dev
+pnpm build
+pnpm preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📁 Estructura
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/
+│   ├── layout/      # Componentes de estructura (Header, Footer, Layout)
+│   ├── sections/    # Secciones de la pagina (Hero, Servicios, Proyectos, Contacto)
+│   └── ui/          # Componentes reutilizables
+├── constants/       # Datos estaticos y contenido
+├── pages/          # Rutas Astro
+└── styles/         # Estilos globales y variables
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🎨 Design System
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **Color primario:** `#d54427` (naranja NEO LUM)
+- **Fondo seccion:** `#eff8f4` (verde claro)
+- **Fondo general:** `#ffffff` (blanco)
+- **Texto:** `#1a1a1a`
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 📱 Responsive
 
-## 🧞 Commands
+El sitio esta optimizado para:
+- Mobile: < 640px
+- Tablet: 640px - 1024px
+- Desktop: > 1024px
 
-All commands are run from the root of the project, from a terminal:
+## 🌐 Despliegue
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+El proyecto esta configurado para desplegarse en cualquier hosting estatico (Vercel, Netlify, etc.).
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Repositorio: https://github.com/hector-reyes-dev/neolum-landing-page
