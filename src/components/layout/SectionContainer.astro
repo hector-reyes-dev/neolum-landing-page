@@ -4,9 +4,10 @@ interface Props {
   class?: string;
   ariaLabel?: string;
   isContent?: boolean;
+  flushMobile?: boolean;
 }
 
-const { id, class: className = "", ariaLabel, isContent = false } = Astro.props;
+const { id, class: className = "", ariaLabel, isContent = false, flushMobile = false } = Astro.props;
 ---
 
 <section 
@@ -17,7 +18,7 @@ const { id, class: className = "", ariaLabel, isContent = false } = Astro.props;
     className
   ]}
 >
-  <div class="container-shell">
+  <div class:list={["container-shell", flushMobile ? "px-0 sm:px-0" : ""]}>
     <slot />
   </div>
 </section>

@@ -6,10 +6,10 @@ import { marketingServices, designServices } from "../../constants/site";
 
 <SectionTitle title="Servicios" />
 
-<SectionContainer id="servicios" ariaLabel="Seccion de servicios" isContent={true}>
+<SectionContainer id="servicios" ariaLabel="Seccion de servicios" isContent={true} flushMobile={true}>
   <div class="grid md:grid-cols-2">
     {/* Row 1: Image | Text */}
-    <figure class="overflow-hidden">
+    <figure class="overflow-hidden border border-[var(--color-primary)]">
       <img
         src="/assets/placeholders/PLACEHOLDER_04.webp"
         alt="Imagen de apoyo para seccion de servicios"
@@ -24,7 +24,7 @@ import { marketingServices, designServices } from "../../constants/site";
         {
           marketingServices.map((service) => (
             <li class="flex gap-2">
-              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
+              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
               <span class="text-pretty">{service}</span>
             </li>
           ))
@@ -39,7 +39,7 @@ import { marketingServices, designServices } from "../../constants/site";
         {
           designServices.map((service) => (
             <li class="flex gap-2">
-              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
+              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
               <span class="text-pretty">{service}</span>
             </li>
           ))
@@ -47,7 +47,7 @@ import { marketingServices, designServices } from "../../constants/site";
       </ul>
     </div>
 
-    <figure class="overflow-hidden">
+    <figure class="overflow-hidden border border-[var(--color-primary)]">
       <img
         src="/assets/placeholders/PLACEHOLDER_05.webp"
         alt="Imagen de apoyo para seccion de diseno"

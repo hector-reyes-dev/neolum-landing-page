@@ -6,7 +6,8 @@ import FormField from "../ui/FormField.astro";
 
 <SectionTitle title="Contacto" />
 
-<SectionContainer id="contacto" ariaLabel="Seccion de contacto" isContent={true}>
+<div class="bg-[var(--color-bg)]">
+  <SectionContainer id="contacto" ariaLabel="Seccion de contacto" isContent={true}>
   <div class="mx-auto max-w-2xl space-y-8 py-8 text-center sm:py-12">
     <form
       action="/api/contact"
@@ -122,6 +123,7 @@ import FormField from "../ui/FormField.astro";
     </form>
   </div>
 </SectionContainer>
+</div>
 
 <script is:inline>
   const form = document.querySelector("[data-contact-form]");

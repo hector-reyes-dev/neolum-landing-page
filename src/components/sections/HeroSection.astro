@@ -9,24 +9,24 @@ const slides = [
 ];
 ---
 
-<SectionContainer id="nosotros" ariaLabel="Seccion principal" isContent={true}>
+<SectionContainer id="nosotros" ariaLabel="Seccion principal" isContent={true} flushMobile={true}>
   <div class="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-    <div class="space-y-6 self-center">
+    <div class="space-y-6 self-center px-0 sm:px-0">
       <h1
-        class="text-balance max-w-3xl text-4xl font-bold leading-tight text-[var(--color-primary)] sm:text-5xl lg:text-6xl"
+        class="text-balance mt-6 max-w-3xl text-4xl font-bold leading-tight text-[var(--color-primary)] sm:mt-0 sm:text-5xl lg:text-6xl"
       >
         Estrategia, identidad y crecimiento.
       </h1>
       <p
-        class="text-pretty max-w-prose text-base leading-relaxed text-black/75 sm:text-lg"
+        class="text-pretty max-w-prose px-0 text-base leading-relaxed text-black/75 sm:px-0 sm:text-lg"
       >
-        En <span class="text-[var(--color-primary)] font-semibold">NEO LUM</span> impulsamos pymes con branding, imagen corporativa y marketing
+        En <span class="font-semibold text-[var(--color-primary)]">NEO LUM</span> impulsamos pymes con branding, imagen corporativa y marketing
         estrategico, creando identidades visuales autenticas y competitivas que
         generan valor en el mercado de hoy.
       </p>
     </div>
 
-    <div class="slider-wrapper space-y-4">
+    <div class="slider-wrapper">
       {/* CSS-only Slider */}
       <div class="slider relative overflow-hidden border border-black/10 bg-white">
         {slides.map((_, index) => (
@@ -51,17 +51,17 @@ const slides = [
             </figure>
           ))}
         </div>
-      </div>
 
-      {/* Dots navigation - centered */}
-      <div class="flex justify-center gap-2">
-        {slides.map((_, index) => (
-          <label
-            for={`slide-${index}`}
-            class={`slide-dot size-2.5 cursor-pointer rounded-full border transition-colors hover:border-[var(--color-primary)]`}
-            aria-label={`Ir al slide ${index + 1}`}
-          />
-        ))}
+        {/* Dots navigation - inside image at bottom */}
+        <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+          {slides.map((_, index) => (
+            <label
+              for={`slide-${index}`}
+              class={`slide-dot size-2.5 cursor-pointer rounded-full border transition-colors hover:border-[var(--color-primary)]`}
+              aria-label={`Ir al slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   </div>
