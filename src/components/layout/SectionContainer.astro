@@ -18,7 +18,12 @@ const { id, class: className = "", ariaLabel, isContent = false, flushMobile = f
     className
   ]}
 >
-  <div class:list={["container-shell", flushMobile ? "px-0 sm:px-0" : ""]}>
+  <div class:list={[
+    "mx-auto max-w-[var(--container-max)]",
+    flushMobile 
+      ? "px-0 sm:px-4 lg:px-[clamp(1rem,2vw+0.5rem,2rem)]" 
+      : "px-4 lg:px-[clamp(1rem,2vw+0.5rem,2rem)]"
+  ]}>
     <slot />
   </div>
 </section>

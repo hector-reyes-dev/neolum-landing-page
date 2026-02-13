@@ -32,7 +32,11 @@ import { contactDetails } from "../../constants/site";
       <div class="space-y-2 text-white/80 sm:col-span-2">
         <h2 class="text-base font-semibold text-white sm:text-lg">Contacto</h2>
         <p>{contactDetails.email}</p>
-        <p>{contactDetails.phone}</p>
+        {
+          contactDetails.phones.map((phone: string) => (
+            <p>{phone}</p>
+          ))
+        }
         <p>{contactDetails.address}</p>
       </div>
     </div>
