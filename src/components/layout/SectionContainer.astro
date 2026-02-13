@@ -3,12 +3,20 @@ interface Props {
   id?: string;
   class?: string;
   ariaLabel?: string;
+  isContent?: boolean;
 }
 
-const { id, class: className = "", ariaLabel } = Astro.props;
+const { id, class: className = "", ariaLabel, isContent = false } = Astro.props;
 ---
 
-<section id={id} aria-label={ariaLabel} class:list={["section-gap", className]}>
+<section 
+  id={id} 
+  aria-label={ariaLabel} 
+  class:list={[
+    isContent ? "border-y border-[var(--color-primary)]" : "", 
+    className
+  ]}
+>
   <div class="container-shell">
     <slot />
   </div>

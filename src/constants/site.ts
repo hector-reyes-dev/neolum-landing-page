@@ -6,40 +6,19 @@ export const navLinks = [
 ] as const;
 
 export const marketingServices = [
-  "Diagnostico de marca y posicionamiento",
-  "Arquitectura de mensajes y propuesta de valor",
-  "Estrategia de contenido para canales digitales",
-  "Planeacion de campanas y activaciones",
-  "Analisis de conversion y optimizacion"
+  "Servicios de Marketing Estratégico",
+  "Consultoría y Planificación de Marketing Estratégico",
+  "Análisis de Mercado, Competencia y Público Objetivo",
+  "Estrategias de Lanzamiento de Marca o Producto",
+  "Reestructuración y Optimización de Estrategias de Marketing"
 ] as const;
 
 export const designServices = [
-  "Identidad visual y lineamientos de marca",
-  "Direccion de arte para campañas",
-  "Diseno de sitios web orientados a negocio",
-  "Landing pages para captacion de leads",
-  "Sistemas UI escalables para crecimiento"
-] as const;
-
-export const projectCards = [
-  {
-    title: "Campana de relanzamiento",
-    category: "Estrategia + contenido",
-    image: "/assets/placeholders/PLACEHOLDER_03.webp",
-    alt: "Vista editorial de proyecto de relanzamiento"
-  },
-  {
-    title: "Rediseño de experiencia web",
-    category: "UX/UI + desarrollo",
-    image: "/assets/placeholders/PLACEHOLDER_02.webp",
-    alt: "Pantallas de rediseño web para marca"
-  },
-  {
-    title: "Sistema visual omnicanal",
-    category: "Identidad + performance",
-    image: "/assets/placeholders/PLACEHOLDER_05.webp",
-    alt: "Piezas visuales de proyecto omnicanal"
-  }
+  "Desarrollo y Gestión de Identidad Visual",
+  "Rebranding y Evolución de Marca",
+  "Dirección de Arte y Producción Visual",
+  "Diseño de Material Visual y Contenidos Digitales",
+  "Diseño y Desarrollo de Sitios Web"
 ] as const;
 
 export const contactDetails = {

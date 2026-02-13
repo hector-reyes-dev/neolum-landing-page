@@ -4,10 +4,10 @@ import SectionTitle from "../ui/SectionTitle.astro";
 import FormField from "../ui/FormField.astro";
 ---
 
-<SectionTitle title="Contacta con nosotros" />
+<SectionTitle title="Contacto" />
 
-<SectionContainer id="contacto" ariaLabel="Seccion de contacto">
-  <div class="mx-auto max-w-2xl space-y-8 text-center">
+<SectionContainer id="contacto" ariaLabel="Seccion de contacto" isContent={true}>
+  <div class="mx-auto max-w-2xl space-y-8 py-8 text-center sm:py-12">
     <form
       action="/api/contact"
       method="POST"

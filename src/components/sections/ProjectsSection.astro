@@ -5,9 +5,9 @@ import SectionTitle from "../ui/SectionTitle.astro";
 
 <SectionTitle title="Proyectos" />
 
-<SectionContainer id="proyectos" ariaLabel="Seccion de proyectos">
-  <div class="grid gap-6 sm:grid-cols-2">
-    <figure class="overflow-hidden border border-black/10 bg-white">
+<SectionContainer id="proyectos" ariaLabel="Seccion de proyectos" isContent={true}>
+  <div class="grid sm:grid-cols-2">
+    <figure class="overflow-hidden">
       <img
         src="/assets/placeholders/PLACEHOLDER_02.webp"
         alt="Vista editorial de proyecto"
@@ -16,7 +16,7 @@ import SectionTitle from "../ui/SectionTitle.astro";
       />
     </figure>
 
-    <figure class="overflow-hidden border border-black/10 bg-white">
+    <figure class="overflow-hidden">
       <img
         src="/assets/placeholders/PLACEHOLDER_03.webp"
         alt="Vista editorial de proyecto"

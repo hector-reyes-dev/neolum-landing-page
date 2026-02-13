@@ -9,7 +9,7 @@ const slides = [
 ];
 ---
 
-<SectionContainer id="nosotros" ariaLabel="Seccion principal">
+<SectionContainer id="nosotros" ariaLabel="Seccion principal" isContent={true}>
   <div class="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
     <div class="space-y-6 self-center">
       <h1
@@ -20,7 +20,7 @@ const slides = [
       <p
         class="text-pretty max-w-prose text-base leading-relaxed text-black/75 sm:text-lg"
       >
-        En NEO LUM impulsamos pymes con branding, imagen corporativa y marketing
+        En <span class="text-[var(--color-primary)] font-semibold">NEO LUM</span> impulsamos pymes con branding, imagen corporativa y marketing
         estrategico, creando identidades visuales autenticas y competitivas que
         generan valor en el mercado de hoy.
       </p>
@@ -28,7 +28,7 @@ const slides = [
 
     <div class="slider-wrapper space-y-4">
       {/* CSS-only Slider */}
-      <div class="slider relative overflow-hidden rounded-2xl border border-black/10 bg-white">
+      <div class="slider relative overflow-hidden border border-black/10 bg-white">
         {slides.map((_, index) => (
           <input
             type="radio"

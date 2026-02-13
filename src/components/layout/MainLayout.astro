@@ -8,8 +8,7 @@ interface Props {
 
 const {
   title = "NEO LUM | Estrategia, identidad y crecimiento",
-  description =
-    "Landing page de NEO LUM enfocada en estrategia, identidad y crecimiento de marca."
+  description = "Landing page de NEO LUM enfocada en estrategia, identidad y crecimiento de marca.",
 } = Astro.props;
 ---
 
@@ -21,8 +20,10 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <title>{title}</title>
   </head>
   <body class="min-h-dvh bg-white text-[var(--color-text)] antialiased">
