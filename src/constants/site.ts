@@ -22,7 +22,7 @@ export const designServices = [
 ] as const;
 
 export const contactDetails = {
-  email: "hola@neolum.mx",
+  email: "contacto@neolum.com",
   phones: ["52 55 373 435 66", "52 55 373 435 66"],
   address: "Ciudad de Mexico, Mexico"
 } as const;
