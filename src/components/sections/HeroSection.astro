@@ -5,11 +5,16 @@ const slides = [
   "/assets/placeholders/PLACEHOLDER_01.webp",
   "/assets/placeholders/PLACEHOLDER_02.webp",
   "/assets/placeholders/PLACEHOLDER_03.webp",
-  "/assets/placeholders/PLACEHOLDER_04.webp"
+  "/assets/placeholders/PLACEHOLDER_04.webp",
 ];
 ---
 
-<SectionContainer id="nosotros" ariaLabel="Seccion principal" isContent={true} flushMobile={true}>
+<SectionContainer
+  id="nosotros"
+  ariaLabel="Seccion principal"
+  isContent={true}
+  flushMobile={true}
+>
   <div class="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
     <div class="space-y-6 self-center px-0 sm:px-0">
       <h1
@@ -20,47 +25,58 @@ const slides = [
       <p
         class="text-pretty max-w-prose px-0 text-base leading-relaxed text-black/75 sm:px-0 sm:text-lg"
       >
-        En <span class="font-semibold text-[var(--color-primary)]">NEO LUM</span> impulsamos pymes con branding, imagen corporativa y marketing
-        estrategico, creando identidades visuales autenticas y competitivas que
-        generan valor en el mercado de hoy.
+        En <span class="font-semibold text-[var(--color-primary)]">NEO LUM</span
+        > impulsamos pymes con branding, imagen corporativa y marketing estrategico,
+        creando identidades visuales autenticas y competitivas que generan valor en
+        el mercado de hoy.
       </p>
     </div>
 
     <div class="slider-wrapper">
       {/* CSS-only Slider */}
-      <div class="slider relative overflow-hidden border border-black/10 bg-white">
-        {slides.map((_, index) => (
-          <input
-            type="radio"
-            name="hero-slider"
-            id={`slide-${index}`}
-            class="slide-input sr-only"
-            checked={index === 0}
-          />
-        ))}
+      <div
+        class="slider relative overflow-hidden border border-black/10 bg-white"
+      >
+        {
+          slides.map((_, index) => (
+            <input
+              type="radio"
+              name="hero-slider"
+              id={`slide-${index}`}
+              class="slide-input sr-only"
+              checked={index === 0}
+            />
+          ))
+        }
 
-        <div class="slider-track flex transition-transform duration-500 ease-out">
-          {slides.map((slide, index) => (
-            <figure class="w-full shrink-0">
-              <img
-                src={slide}
-                alt={`Imagen ${index + 1} del slider principal`}
-                class="aspect-[4/5] w-full object-cover sm:aspect-[16/11] lg:aspect-[4/5]"
-                loading={index === 0 ? "eager" : "lazy"}
-              />
-            </figure>
-          ))}
+        <div
+          class="slider-track flex transition-transform duration-500 ease-out"
+        >
+          {
+            slides.map((slide, index) => (
+              <figure class="w-full shrink-0">
+                <img
+                  src={slide}
+                  alt={`Imagen ${index + 1} del slider principal`}
+                  class="aspect-[4/5] w-full object-cover sm:aspect-[16/11] lg:aspect-[4/5]"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </figure>
+            ))
+          }
         </div>
 
         {/* Dots navigation - inside image at bottom */}
         <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-          {slides.map((_, index) => (
-            <label
-              for={`slide-${index}`}
-              class={`slide-dot size-2.5 cursor-pointer rounded-full border transition-colors hover:border-[var(--color-primary)]`}
-              aria-label={`Ir al slide ${index + 1}`}
-            />
-          ))}
+          {
+            slides.map((_, index) => (
+              <label
+                for={`slide-${index}`}
+                class={`slide-dot size-2.5 cursor-pointer rounded-full border transition-colors hover:border-[var(--color-white)]`}
+                aria-label={`Ir al slide ${index + 1}`}
+              />
+            ))
+          }
         </div>
       </div>
     </div>
@@ -82,7 +98,7 @@ const slides = [
   }
 
   .slide-dot {
-    border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+    border-color: color-mix(in srgb, var(--color-white) 30%, transparent);
     background-color: transparent;
   }
 
@@ -90,7 +106,7 @@ const slides = [
   .slider-wrapper:has(#slide-1:checked) label[for="slide-1"],
   .slider-wrapper:has(#slide-2:checked) label[for="slide-2"],
   .slider-wrapper:has(#slide-3:checked) label[for="slide-3"] {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+    background-color: var(--color-white);
+    border-color: var(--color-white);
   }
 </style>
