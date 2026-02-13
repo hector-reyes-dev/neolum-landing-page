@@ -45,7 +45,7 @@ import { contactDetails } from "../../constants/site";
       <img
         src="/assets/LOGO_NEOLUM_PRINCIPAL.svg"
         alt="Logo NEO LUM grande"
-        class="h-auto w-40 sm:w-48 lg:w-56"
+        class="h-auto w-40 sm:w-48 lg:w-56 animate-fade-up"
         loading="lazy"
       />
     </a>
@@ -60,3 +60,7 @@ import { contactDetails } from "../../constants/site";
     </p>
   </div>
 </div>
+
+<script is:inline>
+  document.querySelector('footer')?.classList.add('animate-slide-up');
+</script>

@@ -16,7 +16,7 @@ import { navLinks } from "../../constants/site";
         <img
           src="/assets/LOGO_NEOLUM_SECUNDARIO.svg"
           alt="Logo NEO LUM"
-          class="h-5 w-auto sm:h-7"
+          class="h-5 w-auto sm:h-7 animate-fade-up"
           loading="eager"
         />
       </a>
@@ -57,3 +57,7 @@ import { navLinks } from "../../constants/site";
     </div>
   </div>
 </header>
+
+<script is:inline>
+  document.querySelector('header')?.classList.add('animate-slide-down');
+</script>
