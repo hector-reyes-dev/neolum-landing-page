@@ -1,0 +1,59 @@
+---
+import SectionContainer from "../layout/SectionContainer.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+import { marketingServices, designServices } from "../../constants/site";
+---
+
+<SectionTitle title="Servicios" />
+
+<SectionContainer id="servicios" ariaLabel="Seccion de servicios">
+  <div class="grid gap-6 md:grid-cols-2">
+    {/* Row 1: Image | Text */}
+    <figure class="overflow-hidden border border-black/10 bg-white">
+      <img
+        src="/assets/placeholders/PLACEHOLDER_04.webp"
+        alt="Imagen de apoyo para seccion de servicios"
+        class="aspect-[4/3] w-full object-cover"
+        loading="lazy"
+      />
+    </figure>
+
+    <div class="flex flex-col justify-center space-y-6 p-4 sm:p-6">
+      <h3 class="text-xl font-semibold text-[var(--color-text)]">Marketing estrategico</h3>
+      <ul class="space-y-3 text-sm leading-relaxed text-black/75 sm:text-base">
+        {
+          marketingServices.map((service) => (
+            <li class="flex gap-2">
+              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
+              <span class="text-pretty">{service}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    {/* Row 2: Text | Image */}
+    <div class="flex flex-col justify-center space-y-6 p-4 sm:p-6">
+      <h3 class="text-xl font-semibold text-[var(--color-text)]">Identidad, diseno y web</h3>
+      <ul class="space-y-3 text-sm leading-relaxed text-black/75 sm:text-base">
+        {
+          designServices.map((service) => (
+            <li class="flex gap-2">
+              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
+              <span class="text-pretty">{service}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <figure class="overflow-hidden border border-black/10 bg-white">
+      <img
+        src="/assets/placeholders/PLACEHOLDER_05.webp"
+        alt="Imagen de apoyo para seccion de diseno"
+        class="aspect-[4/3] w-full object-cover"
+        loading="lazy"
+      />
+    </figure>
+  </div>
+</SectionContainer>

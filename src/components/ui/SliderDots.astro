@@ -1,0 +1,39 @@
+---
+interface Props {
+  count?: number;
+  active?: number;
+  class?: string;
+  label?: string;
+}
+
+const {
+  count = 3,
+  active = 0,
+  class: className = "",
+  label = "Indicador de carrusel"
+} = Astro.props;
+
+const items = Array.from({ length: count });
+---
+
+<div role="group" aria-label={label} class:list={["flex items-center gap-2", className]}>
+  {
+    items.map((_, index) => {
+      const isActive = index === active;
+
+      return (
+        <button
+          type="button"
+          aria-label={`Ir al slide ${index + 1} (solo interfaz)`}
+          aria-current={isActive ? "true" : "false"}
+          class:list={[
+            "size-2.5 rounded-full border transition-colors",
+            isActive
+              ? "border-[var(--color-primary)] bg-[var(--color-primary)]"
+              : "border-[color:var(--color-primary)]/30 bg-transparent"
+          ]}
+        />
+      );
+    })
+  }
+</div>

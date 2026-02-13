@@ -1,0 +1,61 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+  autocomplete?: string;
+  pattern?: string;
+  as?: "input" | "textarea";
+  rows?: number;
+}
+
+const {
+  id,
+  name,
+  label,
+  type = "text",
+  placeholder,
+  required = false,
+  autocomplete,
+  pattern,
+  as = "input",
+  rows = 4
+} = Astro.props;
+
+const fieldClass =
+  "w-full rounded-lg border border-black/15 bg-white px-4 py-3 text-base text-[var(--color-text)] placeholder:text-black/45 focus-visible:border-[var(--color-primary)] focus-visible:outline-none";
+---
+
+<div class="space-y-2">
+  <label for={id} class="block text-sm font-semibold text-[var(--color-text)]">
+    {label}
+  </label>
+
+  {
+    as === "textarea" ? (
+      <textarea
+        id={id}
+        name={name}
+        rows={rows}
+        placeholder={placeholder}
+        required={required}
+        autocomplete={autocomplete}
+        class={fieldClass}
+      />
+    ) : (
+      <input
+        id={id}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+        autocomplete={autocomplete}
+        pattern={pattern}
+        class={fieldClass}
+      />
+    )
+  }
+</div>

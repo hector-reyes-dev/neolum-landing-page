@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #d54427;
+  --color-bg: #eff8f4;
+  --color-text: #1a1a1a;
+  --container-max: 1440px;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Myriad Pro", "MyriadPro", "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  color: var(--color-text);
+  background-color: #ffffff;
+}
+  
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.08;
+}
+
+p {
+  line-height: 1.55;
+}
+
+.container-shell {
+  margin-inline: auto;
+  max-width: var(--container-max);
+  padding-inline: clamp(1rem, 2vw + 0.5rem, 2rem);
+}
+
+.section-gap {
+  padding-block: clamp(3rem, 6vw, 6rem);
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 85%, black 15%);
+  outline-offset: 2px;
+}

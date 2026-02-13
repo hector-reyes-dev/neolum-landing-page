@@ -1,0 +1,15 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  ariaLabel?: string;
+}
+
+const { id, class: className = "", ariaLabel } = Astro.props;
+---
+
+<section id={id} aria-label={ariaLabel} class:list={["section-gap", className]}>
+  <div class="container-shell">
+    <slot />
+  </div>
+</section>

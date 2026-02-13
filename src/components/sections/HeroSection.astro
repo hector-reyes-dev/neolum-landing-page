@@ -1,0 +1,96 @@
+---
+import SectionContainer from "../layout/SectionContainer.astro";
+
+const slides = [
+  "/assets/placeholders/PLACEHOLDER_01.webp",
+  "/assets/placeholders/PLACEHOLDER_02.webp",
+  "/assets/placeholders/PLACEHOLDER_03.webp",
+  "/assets/placeholders/PLACEHOLDER_04.webp"
+];
+---
+
+<SectionContainer id="nosotros" ariaLabel="Seccion principal">
+  <div class="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+    <div class="space-y-6 self-center">
+      <h1
+        class="text-balance max-w-3xl text-4xl font-bold leading-tight text-[var(--color-primary)] sm:text-5xl lg:text-6xl"
+      >
+        Estrategia, identidad y crecimiento.
+      </h1>
+      <p
+        class="text-pretty max-w-prose text-base leading-relaxed text-black/75 sm:text-lg"
+      >
+        En NEO LUM impulsamos pymes con branding, imagen corporativa y marketing
+        estrategico, creando identidades visuales autenticas y competitivas que
+        generan valor en el mercado de hoy.
+      </p>
+    </div>
+
+    <div class="slider-wrapper space-y-4">
+      {/* CSS-only Slider */}
+      <div class="slider relative overflow-hidden rounded-2xl border border-black/10 bg-white">
+        {slides.map((_, index) => (
+          <input
+            type="radio"
+            name="hero-slider"
+            id={`slide-${index}`}
+            class="slide-input sr-only"
+            checked={index === 0}
+          />
+        ))}
+
+        <div class="slider-track flex transition-transform duration-500 ease-out">
+          {slides.map((slide, index) => (
+            <figure class="w-full shrink-0">
+              <img
+                src={slide}
+                alt={`Imagen ${index + 1} del slider principal`}
+                class="aspect-[4/5] w-full object-cover sm:aspect-[16/11] lg:aspect-[4/5]"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+
+      {/* Dots navigation - centered */}
+      <div class="flex justify-center gap-2">
+        {slides.map((_, index) => (
+          <label
+            for={`slide-${index}`}
+            class={`slide-dot size-2.5 cursor-pointer rounded-full border transition-colors hover:border-[var(--color-primary)]`}
+            aria-label={`Ir al slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</SectionContainer>
+
+<style>
+  .slider-wrapper:has(#slide-0:checked) .slider-track {
+    transform: translateX(0%);
+  }
+  .slider-wrapper:has(#slide-1:checked) .slider-track {
+    transform: translateX(-100%);
+  }
+  .slider-wrapper:has(#slide-2:checked) .slider-track {
+    transform: translateX(-200%);
+  }
+  .slider-wrapper:has(#slide-3:checked) .slider-track {
+    transform: translateX(-300%);
+  }
+
+  .slide-dot {
+    border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+    background-color: transparent;
+  }
+
+  .slider-wrapper:has(#slide-0:checked) label[for="slide-0"],
+  .slider-wrapper:has(#slide-1:checked) label[for="slide-1"],
+  .slider-wrapper:has(#slide-2:checked) label[for="slide-2"],
+  .slider-wrapper:has(#slide-3:checked) label[for="slide-3"] {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+</style>

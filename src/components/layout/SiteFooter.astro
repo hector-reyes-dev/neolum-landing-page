@@ -1,0 +1,49 @@
+---
+import { contactDetails } from "../../constants/site";
+---
+
+<footer class="bg-[var(--color-primary)] py-12 text-white sm:py-14">
+  <div class="container-shell grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+    <div class="grid gap-8 text-sm sm:grid-cols-2 sm:text-base">
+      <div class="space-y-3">
+        <h2 class="text-base font-semibold sm:text-lg">Enlaces</h2>
+        <ul class="space-y-2 text-white/80">
+          <li>
+            <a href="#servicios" class="transition-colors hover:text-white">Servicios</a>
+          </li>
+          <li>
+            <a href="#contacto" class="transition-colors hover:text-white">Contacto</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h2 class="text-base font-semibold sm:text-lg">Legales</h2>
+        <ul class="space-y-2 text-white/80">
+          <li>
+            <a href="#" class="transition-colors hover:text-white">Terminos y condiciones</a>
+          </li>
+          <li>
+            <a href="#" class="transition-colors hover:text-white">Aviso de privacidad</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-2 text-white/80 sm:col-span-2">
+        <h2 class="text-base font-semibold text-white sm:text-lg">Contacto</h2>
+        <p>{contactDetails.email}</p>
+        <p>{contactDetails.phone}</p>
+        <p>{contactDetails.address}</p>
+      </div>
+    </div>
+
+    <a href="#top" aria-label="Volver arriba" class="inline-flex justify-start lg:justify-end">
+      <img
+        src="/assets/LOGO_NEOLUM_PRINCIPAL.svg"
+        alt="Logo NEO LUM grande"
+        class="h-auto w-28 sm:w-36 lg:w-40"
+        loading="lazy"
+      />
+    </a>
+  </div>
+</footer>

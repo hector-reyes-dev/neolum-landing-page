@@ -1,0 +1,28 @@
+---
+import SectionContainer from "../layout/SectionContainer.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+---
+
+<SectionTitle title="Proyectos" />
+
+<SectionContainer id="proyectos" ariaLabel="Seccion de proyectos">
+  <div class="grid gap-6 sm:grid-cols-2">
+    <figure class="overflow-hidden border border-black/10 bg-white">
+      <img
+        src="/assets/placeholders/PLACEHOLDER_02.webp"
+        alt="Vista editorial de proyecto"
+        class="aspect-[4/3] w-full object-cover"
+        loading="lazy"
+      />
+    </figure>
+
+    <figure class="overflow-hidden border border-black/10 bg-white">
+      <img
+        src="/assets/placeholders/PLACEHOLDER_03.webp"
+        alt="Vista editorial de proyecto"
+        class="aspect-[4/3] w-full object-cover"
+        loading="lazy"
+      />
+    </figure>
+  </div>
+</SectionContainer>
