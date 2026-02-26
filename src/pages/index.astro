@@ -5,6 +5,8 @@ import SiteFooter from "../components/layout/SiteFooter.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import ServicesSection from "../components/sections/ServicesSection.astro";
 import ProjectsSection from "../components/sections/ProjectsSection.astro";
+import ProcessSection from "../components/sections/ProcessSection.astro";
+import DividerText from "../components/ui/DividerText.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
 ---
 
@@ -13,8 +15,12 @@ import ContactSection from "../components/sections/ContactSection.astro";
   <main id="contenido">
     <HeroSection />
     <ServicesSection />
+    <DividerText text="Creamos estrategias que transforman" />
     <ProjectsSection />
+    <ProcessSection />
+    <DividerText text="Mas que un servicio, una alianza" />
     <ContactSection />
+    <DividerText text="¿Listo para dar el siguiente paso?" />
   </main>
   <SiteFooter />
 </MainLayout>

@@ -1,0 +1,66 @@
+---
+import SectionContainer from "../layout/SectionContainer.astro";
+---
+
+<section
+  id="proceso"
+  aria-label="Seccion de proceso"
+  class="bg-[var(--color-bg)]"
+>
+  <SectionContainer isContent={true} flushMobile={true}>
+    <div class="bg-[var(--color-bg)] py-16 sm:py-24 lg:py-28">
+      <h2
+        class="text-balance text-center text-[clamp(4rem,10vw,9rem)] font-bold leading-[0.9] text-[var(--color-primary)]"
+      >
+        Proceso
+      </h2>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer isContent={true}>
+    <div class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
+      <div class="mx-auto grid max-w-3xl gap-10 text-center">
+        <article>
+          <h3
+            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+          >
+            Enfoque en resultados
+          </h3>
+          <p
+            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+          >
+            Cada decision de diseno tiene un objetivo de negocio: atraer,
+            conectar y convertir.
+          </p>
+        </article>
+
+        <article>
+          <h3
+            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+          >
+            Cercania y colaboracion
+          </h3>
+          <p
+            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+          >
+            Trabajamos contigo, no para ti. Eres parte activa del proceso.
+          </p>
+        </article>
+
+        <article>
+          <h3
+            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+          >
+            Autenticidad
+          </h3>
+          <p
+            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+          >
+            No aplicamos formulas magicas. Buscamos y potenciamos lo que hace
+            unica a tu empresa.
+          </p>
+        </article>
+      </div>
+    </div>
+  </SectionContainer>
+</section>

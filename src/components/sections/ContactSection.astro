@@ -7,122 +7,126 @@ import FormField from "../ui/FormField.astro";
 <SectionTitle title="Contacto" />
 
 <div class="bg-[var(--color-bg)]">
-  <SectionContainer id="contacto" ariaLabel="Seccion de contacto" isContent={true}>
-  <div class="mx-auto max-w-2xl space-y-8 py-8 text-center sm:py-12">
-    <form
-      action="/api/contact"
-      method="POST"
-      class="space-y-5 text-left"
-      data-contact-form
-    >
-      <FormField
-        id="firstName"
-        name="firstName"
-        label="Nombre"
-        placeholder="Tu nombre"
-        autocomplete="given-name"
-        required
-      />
-
-      <FormField
-        id="lastName"
-        name="lastName"
-        label="Apellidos"
-        placeholder="Tus apellidos"
-        autocomplete="family-name"
-        required
-      />
-
-      <FormField
-        id="email"
-        name="email"
-        label="Correo"
-        type="email"
-        placeholder="nombre@empresa.com"
-        autocomplete="email"
-        pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
-        required
-      />
-
-      <FormField
-        id="company"
-        name="company"
-        label="Empresa"
-        placeholder="Nombre de la empresa"
-        autocomplete="organization"
-      />
-
-      <div class="space-y-2">
-        <label
-          for="phone"
-          class="block text-sm font-semibold text-[var(--color-text)]"
-        >
-          Numero de contacto
-        </label>
-        <div class="flex gap-3">
-          <select
-            id="countryCode"
-            name="countryCode"
-            class="w-24 rounded-lg border border-black/15 bg-white px-3 py-3 text-sm font-semibold text-[var(--color-text)] focus-visible:border-[var(--color-primary)] focus-visible:outline-none"
-            aria-label="Codigo de pais"
-          >
-            <option value="+52">+52</option>
-          </select>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            inputmode="numeric"
-            autocomplete="tel-national"
-            placeholder="55 1234 5678"
-            pattern="[0-9\\s()-]{8,}"
-            required
-            class="w-full rounded-lg border border-black/15 bg-white px-4 py-3 text-base text-[var(--color-text)] placeholder:text-black/45 focus-visible:border-[var(--color-primary)] focus-visible:outline-none"
-          />
-        </div>
-      </div>
-
-      <FormField
-        id="message"
-        name="message"
-        label="Mensaje"
-        placeholder="Describe objetivos, tiempos y necesidades clave"
-        as="textarea"
-        rows={5}
-        required
-      />
-
-      <button
-        type="submit"
-        class="inline-flex w-full items-center justify-center rounded-lg bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-        data-submit-button
+  <SectionContainer
+    id="contacto"
+    ariaLabel="Seccion de contacto"
+    isContent={true}
+  >
+    <div class="mx-auto max-w-2xl space-y-8 py-8 text-center sm:py-12">
+      <form
+        action="/api/contact"
+        method="POST"
+        class="space-y-5 text-left"
+        data-contact-form
       >
-        Enviar mensaje
-      </button>
+        <FormField
+          id="firstName"
+          name="firstName"
+          label="Nombre"
+          placeholder="Tu nombre"
+          autocomplete="given-name"
+          required
+        />
 
-      <div class="space-y-2 text-sm" aria-live="polite">
-        <p
-          class="hidden rounded-md border border-[var(--color-primary)]/25 bg-[var(--color-primary)]/10 px-3 py-2 text-[var(--color-text)]"
-          data-status-loading
+        <FormField
+          id="lastName"
+          name="lastName"
+          label="Apellidos"
+          placeholder="Tus apellidos"
+          autocomplete="family-name"
+          required
+        />
+
+        <FormField
+          id="email"
+          name="email"
+          label="Correo"
+          type="email"
+          placeholder="nombre@empresa.com"
+          autocomplete="email"
+          pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+          required
+        />
+
+        <FormField
+          id="company"
+          name="company"
+          label="Empresa"
+          placeholder="Nombre de la empresa"
+          autocomplete="organization"
+        />
+
+        <div class="space-y-2">
+          <label
+            for="phone"
+            class="block text-sm font-semibold text-[var(--color-text)]"
+          >
+            Numero de contacto
+          </label>
+          <div class="flex gap-3">
+            <select
+              id="countryCode"
+              name="countryCode"
+              class="w-24 rounded-3xl border border-black/15 bg-white px-6 py-3 text-sm font-semibold text-[var(--color-text)] focus-visible:border-[var(--color-primary)] focus-visible:outline-none"
+              aria-label="Codigo de pais"
+            >
+              <option value="+52">+52</option>
+            </select>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="numeric"
+              autocomplete="tel-national"
+              placeholder="55 1234 5678"
+              pattern="[0-9\\s()-]{8,}"
+              required
+              class="w-full rounded-3xl border border-black/15 bg-white px-4 py-3 text-base text-[var(--color-text)] placeholder:text-black/45 focus-visible:border-[var(--color-primary)] focus-visible:outline-none"
+            />
+          </div>
+        </div>
+
+        <FormField
+          id="message"
+          name="message"
+          label="Mensaje"
+          placeholder="Describe objetivos, tiempos y necesidades clave"
+          as="textarea"
+          rows={5}
+          required
+        />
+
+        <button
+          type="submit"
+          class="inline-flex w-full items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          data-submit-button
         >
-          Enviando mensaje...
-        </p>
-        <p
-          class="hidden rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-700"
-          data-status-success
-        >
-          Mensaje enviado. Te responderemos pronto.
-        </p>
-        <p
-          class="hidden rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-rose-700"
-          data-status-error
-        >
-          Ocurrio un error al enviar. Intenta nuevamente.
-        </p>
-      </div>
-    </form>
-  </div>
-</SectionContainer>
+          Cuéntanos de tu proyecto
+        </button>
+
+        <div class="space-y-2 text-sm" aria-live="polite">
+          <p
+            class="hidden rounded-md border border-[var(--color-primary)]/25 bg-[var(--color-primary)]/10 px-3 py-2 text-[var(--color-text)]"
+            data-status-loading
+          >
+            Enviando mensaje...
+          </p>
+          <p
+            class="hidden rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-700"
+            data-status-success
+          >
+            Mensaje enviado. Te responderemos pronto.
+          </p>
+          <p
+            class="hidden rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-rose-700"
+            data-status-error
+          >
+            Ocurrio un error al enviar. Intenta nuevamente.
+          </p>
+        </div>
+      </form>
+    </div>
+  </SectionContainer>
 </div>
 
 <script is:inline>

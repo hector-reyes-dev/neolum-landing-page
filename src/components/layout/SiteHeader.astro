@@ -2,36 +2,35 @@
 import { navLinks } from "../../constants/site";
 ---
 
-<header class="py-6">
+<header class="border-y border-[var(--color-primary)] bg-white">
   <div class="container-shell">
-    <div
-      class="flex items-stretch overflow-hidden rounded-full border border-[var(--color-primary)] bg-white"
-    >
-      {/* Left: Logo section */}
+    <div class="flex min-h-[6rem] items-stretch">
       <a
         href="#top"
         aria-label="Ir al inicio"
-        class="flex shrink-0 items-center border-r border-[var(--color-primary)] bg-white px-4 py-3 sm:px-6 sm:py-4"
+        class="flex shrink-0 items-center border-r border-[var(--color-primary)] px-4 sm:px-6"
       >
         <img
           src="/assets/LOGO_NEOLUM_SECUNDARIO.svg"
           alt="Logo NEO LUM"
-          class="h-5 w-auto sm:h-7 animate-fade-up"
+          class="h-8 w-auto sm:h-16"
           loading="eager"
         />
       </a>
 
-      {/* Center: Navigation - Hidden on mobile */}
-      <nav aria-label="Navegacion principal" class="hidden flex-1 md:block">
+      <nav
+        aria-label="Navegacion principal"
+        class="flex min-w-0 flex-1 items-center justify-end"
+      >
         <ul
-          class="flex h-full items-center justify-end gap-6 px-6 text-sm font-semibold"
+          class="flex items-center gap-4 overflow-x-auto px-4 py-3 font-normal whitespace-nowrap sm:gap-12 sm:px-6 sm:text-[0.84rem]"
         >
           {
             navLinks.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]"
+                  class="text-[var(--color-text)] text-[1.2rem] transition-colors hover:text-[var(--color-primary)]"
                 >
                   {link.label}
                 </a>
@@ -41,23 +40,15 @@ import { navLinks } from "../../constants/site";
         </ul>
       </nav>
 
-      {/* Spacer for mobile to push IG to right */}
-      <div class="flex-1 md:hidden"></div>
-
-      {/* Right: IG icon */}
-      <a
-        href="https://instagram.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        class="flex shrink-0 items-center justify-center self-stretch rounded-r-full bg-[var(--color-primary)] px-12 text-white transition-opacity hover:opacity-90 sm:px-8"
-      >
-        <span class="text-sm font-bold">IG</span>
-      </a>
+      <div class="flex w-14 shrink-0 items-center justify-center sm:w-16">
+        <img
+          src="/assets/NEOLUM_ICONO.svg"
+          alt=""
+          class="h-8 w-auto sm:h-16"
+          aria-hidden="true"
+          loading="lazy"
+        />
+      </div>
     </div>
   </div>
 </header>
-
-<script is:inline>
-  document.querySelector('header')?.classList.add('animate-slide-down');
-</script>

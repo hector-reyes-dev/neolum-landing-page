@@ -19,6 +19,7 @@
 :root {
   --color-primary: #d54427;
   --color-bg: #eff8f4;
+  --color-soft: #f2e7e6;
   --color-text: #1a1a1a;
   --color-white: #ffffff;
   --container-max: 1440px;
@@ -26,14 +27,14 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 body {
   margin: 0;
   font-family: "Myriad Pro", "Trebuchet MS", "Segoe UI", Arial, sans-serif;
   color: var(--color-text);
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 h1,
@@ -44,87 +45,19 @@ h4 {
 }
 
 p {
-  line-height: 1.55;
+  line-height: 1.4;
 }
 
 .container-shell {
   margin-inline: auto;
   max-width: var(--container-max);
-  padding-inline: clamp(1rem, 2vw + 0.5rem, 2rem);
 }
 
-.section-gap {
-  padding-block: clamp(3rem, 6vw, 6rem);
+img {
+  display: block;
 }
 
 :where(a, button, input, textarea, select):focus-visible {
   outline: 2px solid color-mix(in srgb, var(--color-primary) 85%, black 15%);
   outline-offset: 2px;
-}
-
-/* Animations */
-@keyframes fade-up-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-down-in {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-up-in {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fade-up-in 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-slide-down {
-  animation: slide-down-in 0.6s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-slide-up {
-  animation: slide-up-in 0.6s ease-out forwards;
-  opacity: 0;
-}
-
-/* Animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-up,
-  .animate-slide-down,
-  .animate-slide-up {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
 }

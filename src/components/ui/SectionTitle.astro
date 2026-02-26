@@ -6,15 +6,19 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<div class="border-y border-[var(--color-primary)]/30 bg-[var(--color-bg)]">
-  <div class="container-shell flex items-center justify-between py-4 sm:py-5">
-    <h2 class="text-balance text-2xl font-bold text-[var(--color-primary)] sm:text-3xl lg:text-4xl">
+<div class="border-t border-[var(--color-primary)] bg-[var(--color-bg)]">
+  <div
+    class="container-shell flex items-center justify-between py-3 pl-4 sm:py-4"
+  >
+    <h2
+      class="text-balance text-[clamp(2.7rem,4vw,4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+    >
       {title}
     </h2>
     <img
       src="/assets/NEOLUM_ICONO.svg"
       alt=""
-      class="h-10 w-auto sm:h-12 lg:h-14 animate-fade-up"
+      class="h-12 w-auto sm:h-16 lg:h-20"
       loading="lazy"
       aria-hidden="true"
     />

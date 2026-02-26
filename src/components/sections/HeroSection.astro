@@ -2,10 +2,10 @@
 import SectionContainer from "../layout/SectionContainer.astro";
 
 const slides = [
+  "/assets/placeholders/PLACEHOLDER_05.webp",
   "/assets/placeholders/PLACEHOLDER_01.webp",
-  "/assets/placeholders/PLACEHOLDER_02.webp",
-  "/assets/placeholders/PLACEHOLDER_03.webp",
   "/assets/placeholders/PLACEHOLDER_04.webp",
+  "/assets/placeholders/PLACEHOLDER_02.webp",
 ];
 ---
 
@@ -15,28 +15,32 @@ const slides = [
   isContent={true}
   flushMobile={true}
 >
-  <div class="grid items-start gap-10 px-4 md:px-0 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-    <div class="space-y-6 self-center">
-      <h1
-        class="text-balance mt-6 max-w-3xl text-4xl font-bold leading-tight text-[var(--color-primary)] sm:mt-0 sm:text-5xl lg:text-6xl"
-      >
-        Estrategia, identidad y crecimiento.
-      </h1>
-      <p
-        class="text-pretty max-w-prose text-base leading-relaxed text-black/75 sm:text-lg"
-      >
-        En <span class="font-semibold text-[var(--color-primary)]">NEO LUM</span
-        > impulsamos pymes con branding, imagen corporativa y marketing estrategico,
-        creando identidades visuales autenticas y competitivas que generan valor en
-        el mercado de hoy.
-      </p>
+  <div class="relative grid bg-white lg:grid-cols-2">
+    <div class="flex items-center bg-white px-5 py-10 sm:px-8">
+      <div class="max-w-[42rem] space-y-8">
+        <h1
+          class="text-balance text-[clamp(3.8rem,8vw,8rem)] font-bold leading-[0.88] text-[var(--color-primary)]"
+        >
+          Estrategia, identidad y crecimiento.
+        </h1>
+        <div
+          class="max-w-[90%] space-y-4 text-[1.2rem] leading-[1.28] text-black"
+        >
+          <p class="text-pretty">
+            En <span class="font-bold text-[var(--color-primary)]">NEO LUM</span
+            >, ayudamos a empresas a destacar en un mercado saturado.
+          </p>
+          <p class="text-pretty">
+            Creamos identidades visuales autenticas y estrategias de marketing
+            que no solo se ven bien, sino que conectan con tu cliente ideal y
+            generan resultados reales.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="slider-wrapper">
-      {/* CSS-only Slider */}
-      <div
-        class="slider relative overflow-hidden border border-black/10 bg-white animate-fade-up"
-      >
+      <div class="slider relative h-full overflow-hidden bg-white">
         {
           slides.map((_, index) => (
             <input
@@ -50,7 +54,7 @@ const slides = [
         }
 
         <div
-          class="slider-track flex transition-transform duration-500 ease-out"
+          class="slider-track flex h-full transition-transform duration-500 ease-out"
         >
           {
             slides.map((slide, index) => (
@@ -58,7 +62,7 @@ const slides = [
                 <img
                   src={slide}
                   alt={`Imagen ${index + 1} del slider principal`}
-                  class="aspect-[4/5] w-full object-cover sm:aspect-[16/11] lg:aspect-[4/5]"
+                  class="h-full min-h-[10rem] w-full object-cover"
                   loading={index === 0 ? "eager" : "lazy"}
                 />
               </figure>
@@ -66,13 +70,14 @@ const slides = [
           }
         </div>
 
-        {/* Dots navigation - inside image at bottom */}
-        <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+        <div
+          class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2"
+        >
           {
             slides.map((_, index) => (
               <label
                 for={`slide-${index}`}
-                class={`slide-dot size-2.5 cursor-pointer rounded-full border transition-colors hover:border-[var(--color-white)]`}
+                class="slide-dot size-2.5 cursor-pointer rounded-full border transition-colors"
                 aria-label={`Ir al slide ${index + 1}`}
               />
             ))
@@ -80,6 +85,14 @@ const slides = [
         </div>
       </div>
     </div>
+
+    <img
+      src="/assets/NEOLUM_ICONO.svg"
+      alt=""
+      class="pointer-events-none absolute bottom-40 left-1/2 hidden h-32 w-auto -translate-x-1/2 lg:block"
+      aria-hidden="true"
+      loading="lazy"
+    />
   </div>
 </SectionContainer>
 
@@ -98,7 +111,7 @@ const slides = [
   }
 
   .slide-dot {
-    border-color: color-mix(in srgb, var(--color-white) 30%, transparent);
+    border-color: color-mix(in srgb, var(--color-white) 55%, transparent);
     background-color: transparent;
   }
 

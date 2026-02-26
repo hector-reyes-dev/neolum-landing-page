@@ -7,23 +7,17 @@ interface Props {
   flushMobile?: boolean;
 }
 
-const { id, class: className = "", ariaLabel, isContent = false, flushMobile = false } = Astro.props;
+const {
+  id,
+  class: className = "",
+  ariaLabel,
+  isContent = false,
+  flushMobile = false,
+} = Astro.props;
 ---
 
-<section 
-  id={id} 
-  aria-label={ariaLabel} 
-  class:list={[
-    isContent ? "border-y border-[var(--color-primary)]" : "", 
-    className
-  ]}
->
-  <div class:list={[
-    "mx-auto max-w-[var(--container-max)]",
-    flushMobile 
-      ? "px-0 sm:px-4 lg:px-[clamp(1rem,2vw+0.5rem,2rem)]" 
-      : "px-4 lg:px-[clamp(1rem,2vw+0.5rem,2rem)]"
-  ]}>
+<section id={id} aria-label={ariaLabel}>
+  <div class="mx-auto max-w-[var(--container-max)]">
     <slot />
   </div>
 </section>

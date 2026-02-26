@@ -1,28 +1,64 @@
 ---
 import SectionContainer from "../layout/SectionContainer.astro";
-import SectionTitle from "../ui/SectionTitle.astro";
 ---
 
-<SectionTitle title="Proyectos" />
+<SectionContainer
+  id="proyectos"
+  ariaLabel="Seccion de proyectos"
+  isContent={true}
+  flushMobile={true}
+>
+  <div class="grid md:grid-cols-2">
+    <article
+      class="flex aspect-square items-end bg-[var(--color-primary)] p-6 sm:p-10"
+    >
+      <h3
+        class="text-balance text-[clamp(2.5rem,7vw,5.75rem)] font-bold leading-[0.88] text-white"
+      >
+        Proyectos
+      </h3>
+    </article>
 
-<SectionContainer id="proyectos" ariaLabel="Seccion de proyectos" isContent={true} flushMobile={true}>
-  <div class="grid sm:grid-cols-2">
-    <figure class="overflow-hidden">
-      <img
-        src="/assets/placeholders/PLACEHOLDER_02.webp"
-        alt="Vista editorial de proyecto"
-        class="aspect-[4/3] w-full object-cover animate-fade-up"
-        loading="lazy"
-      />
-    </figure>
-
-    <figure class="overflow-hidden">
+    <figure class="relative aspect-square overflow-hidden">
       <img
         src="/assets/placeholders/PLACEHOLDER_03.webp"
-        alt="Vista editorial de proyecto"
-        class="aspect-[4/3] w-full object-cover animate-fade-up delay-200"
+        alt="Proyecto Nevia"
+        class="h-full w-full object-cover"
         loading="lazy"
       />
+      <figcaption
+        class="pointer-events-none absolute inset-0 flex items-center justify-center text-center text-[clamp(2.8rem,8vw,6rem)] font-bold text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.38)]"
+      >
+        NEVIA
+      </figcaption>
+    </figure>
+
+    <figure class="relative aspect-square overflow-hidden">
+      <img
+        src="/assets/placeholders/PLACEHOLDER_01.webp"
+        alt="Proyecto Simple Meals"
+        class="h-full w-full object-cover"
+        loading="lazy"
+      />
+      <figcaption
+        class="pointer-events-none absolute inset-0 flex items-end px-6 pb-8 text-[clamp(2.5rem,7vw,5rem)] font-semibold leading-[0.82] text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]"
+      >
+        simple<br />meals
+      </figcaption>
+    </figure>
+
+    <figure class="relative aspect-square overflow-hidden">
+      <img
+        src="/assets/placeholders/PLACEHOLDER_02.webp"
+        alt="Proyecto Latosa"
+        class="h-full w-full object-cover"
+        loading="lazy"
+      />
+      <figcaption
+        class="pointer-events-none absolute inset-0 flex items-end px-6 pb-8 text-[clamp(3rem,8vw,6rem)] font-bold italic leading-[0.8] text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.42)]"
+      >
+        latosa
+      </figcaption>
     </figure>
   </div>
 </SectionContainer>

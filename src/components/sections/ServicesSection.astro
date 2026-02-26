@@ -1,7 +1,7 @@
 ---
 import SectionContainer from "../layout/SectionContainer.astro";
 import SectionTitle from "../ui/SectionTitle.astro";
-import { marketingServices, designServices } from "../../constants/site";
+import { marketingServices, webServices } from "../../constants/site";
 ---
 
 <SectionTitle title="Servicios" />
@@ -13,48 +13,58 @@ import { marketingServices, designServices } from "../../constants/site";
   flushMobile={true}
 >
   <div class="grid md:grid-cols-2">
-    {/* Row 1: Image | Text */}
-    <figure class="overflow-hidden border border-[var(--color-primary)]">
+    <figure class="overflow-hidden">
       <img
-        src="/assets/placeholders/PLACEHOLDER_04.webp"
+        src="/assets/placeholders/PLACEHOLDER_01.webp"
         alt="Imagen de apoyo para seccion de servicios"
-        class="aspect-[4/3] w-full object-cover animate-fade-up"
+        class="aspect-square w-full object-cover md:aspect-[4/3]"
         loading="lazy"
       />
     </figure>
 
-    <div class="flex flex-col justify-center px-4 py-6 sm:px-6 md:px-8">
-      <ul class="space-y-3 text-sm leading-relaxed text-black/75 sm:text-base">
-        {
-          designServices.map((service) => (
-            <li class="flex gap-2">
-              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
-              <span class="text-pretty">{service}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
-    {/* Row 2: Text | Image */}
-    <div class="flex flex-col justify-center px-4 py-6 sm:px-6 md:px-8">
-      <ul class="space-y-3 text-sm leading-relaxed text-black/75 sm:text-base">
+    <div
+      class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:px-12"
+    >
+      <h3
+        class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+      >
+        Marketing Digital<br />y Contenidos
+      </h3>
+      <ul
+        class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
+      >
         {
           marketingServices.map((service) => (
-            <li class="flex gap-2">
-              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
-              <span class="text-pretty">{service}</span>
-            </li>
+            <li class="text-balance">• {service}</li>
           ))
         }
       </ul>
     </div>
 
-    <figure class="overflow-hidden border border-[var(--color-primary)]">
+    <div
+      class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:px-12"
+    >
+      <h3
+        class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+      >
+        Presencia Web<br />y Digital
+      </h3>
+      <ul
+        class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
+      >
+        {
+          webServices.map((service) => (
+            <li class="text-balance">• {service}</li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <figure class="overflow-hidden">
       <img
-        src="/assets/placeholders/PLACEHOLDER_05.webp"
+        src="/assets/placeholders/PLACEHOLDER_04.webp"
         alt="Imagen de apoyo para seccion de diseno"
-        class="aspect-[4/3] w-full object-cover animate-fade-up delay-200"
+        class="aspect-square w-full object-cover md:aspect-[4/3]"
         loading="lazy"
       />
     </figure>

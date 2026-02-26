@@ -2,65 +2,71 @@
 import { contactDetails } from "../../constants/site";
 ---
 
-<footer class="bg-[var(--color-primary)] py-12 text-white sm:py-14">
-  <div class="container-shell grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-    <div class="grid gap-8 text-sm sm:grid-cols-2 sm:text-base">
-      <div class="space-y-3">
-        <h2 class="text-base font-semibold sm:text-lg">Enlaces</h2>
-        <ul class="space-y-2 text-white/80">
+<footer class="bg-[var(--color-primary)] text-white">
+  <div
+    class="container-shell grid gap-10 py-10 px-8 sm:py-12 lg:grid-cols-[1fr_auto] lg:items-end"
+  >
+    <div class="space-y-8">
+      <div
+        class="grid grid-cols-2 gap-8 text-[clamp(1rem,1.35vw,1.25rem)] font-semibold"
+      >
+        <ul class="space-y-2">
           <li>
-            <a href="#servicios" class="transition-colors hover:text-white">Servicios</a>
+            <a href="#nosotros" class="transition-opacity hover:opacity-80"
+              >Nosotros</a
+            >
           </li>
           <li>
-            <a href="#contacto" class="transition-colors hover:text-white">Contacto</a>
+            <a href="#servicios" class="transition-opacity hover:opacity-80"
+              >Servicios</a
+            >
+          </li>
+        </ul>
+        <ul class="space-y-2">
+          <li>
+            <a href="#proyectos" class="transition-opacity hover:opacity-80"
+              >Proyectos</a
+            >
+          </li>
+          <li>
+            <a href="#contacto" class="transition-opacity hover:opacity-80"
+              >Contacto</a
+            >
           </li>
         </ul>
       </div>
 
-      <div class="space-y-3">
-        <h2 class="text-base font-semibold sm:text-lg">Legales</h2>
-        <ul class="space-y-2 text-white/80">
-          <li>
-            <a href="#" class="transition-colors hover:text-white">Terminos y condiciones</a>
-          </li>
-          <li>
-            <a href="#" class="transition-colors hover:text-white">Aviso de privacidad</a>
-          </li>
-        </ul>
+      <div class="space-y-1 text-sm text-white/90">
+        <p>Terminos y condiciones</p>
+        <p>Aviso de privacidad</p>
       </div>
 
-      <div class="space-y-2 text-white/80 sm:col-span-2">
-        <h2 class="text-base font-semibold text-white sm:text-lg">Contacto</h2>
+      <div class="space-y-1 text-sm text-white/90">
+        <p>{contactDetails.handle}</p>
         <p>{contactDetails.email}</p>
-        {
-          contactDetails.phones.map((phone: string) => (
-            <p>{phone}</p>
-          ))
-        }
-        <p>{contactDetails.address}</p>
+        {contactDetails.phones.map((phone: string) => <p>{phone}</p>)}
       </div>
     </div>
 
-    <a href="#top" aria-label="Volver arriba" class="inline-flex justify-start lg:justify-end">
+    <a
+      href="#top"
+      aria-label="Volver arriba"
+      class="inline-flex justify-start lg:justify-end"
+    >
       <img
         src="/assets/LOGO_NEOLUM_PRINCIPAL.svg"
-        alt="Logo NEO LUM grande"
-        class="h-auto w-40 sm:w-48 lg:w-56 animate-fade-up"
+        alt="Logo NEO LUM"
+        class="h-auto w-48 sm:w-64 lg:w-[25rem]"
         loading="lazy"
       />
     </a>
   </div>
 </footer>
 
-{/* Copyright bar */}
-<div class="border-t border-[var(--color-primary)] bg-white py-4">
+<div class="bg-white py-2">
   <div class="container-shell text-center">
-    <p class="text-sm text-[var(--color-text)]">
+    <p class="text-4 text-[var(--color-text)]">
       © 2026 All rights reserved to NEO LUM.
     </p>
   </div>
 </div>
-
-<script is:inline>
-  document.querySelector('footer')?.classList.add('animate-slide-up');
-</script>
