@@ -8,107 +8,203 @@ import SectionContainer from "../layout/SectionContainer.astro";
   class="bg-[var(--color-bg)]"
 >
   <SectionContainer isContent={true}>
-    <div class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
-      <div class="mx-auto grid max-w-3xl gap-10 text-center">
-        <article>
-          <h3
-            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
-          >
-            Fundación
-          </h3>
-          <p
-            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
-          >
-            Escuchamos, investigamos y definimos la estrategia y el rumbo de tu
-            marca.
-          </p>
-        </article>
+    <div class="relative overflow-hidden" data-process-scene>
+      <div data-process-first class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
+        <div class="mx-auto grid max-w-3xl gap-10 text-center">
+          <article>
+            <h3
+              class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+            >
+              Fundación
+            </h3>
+            <p
+              class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+            >
+              Escuchamos, investigamos y definimos la estrategia y el rumbo de
+              tu marca.
+            </p>
+          </article>
 
-        <article>
-          <h3
-            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
-          >
-            Desarrollo
-          </h3>
-          <p
-            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
-          >
-            Creamos tu identidad visual, diseñamos tu web y planificamos tu
-            contenido.
-          </p>
-        </article>
+          <article>
+            <h3
+              class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+            >
+              Desarrollo
+            </h3>
+            <p
+              class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+            >
+              Creamos tu identidad visual, diseñamos tu web y planificamos tu
+              contenido.
+            </p>
+          </article>
 
-        <article>
-          <h3
-            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
-          >
-            Gestión
-          </h3>
-          <p
-            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
-          >
-            Te acompañamos en la administración digital y la comunicación
-            constante para asegurar el crecimiento.
-          </p>
-        </article>
+          <article>
+            <h3
+              class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+            >
+              Gestión
+            </h3>
+            <p
+              class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+            >
+              Te acompañamos en la administración digital y la comunicación
+              constante para asegurar el crecimiento.
+            </p>
+          </article>
+        </div>
       </div>
-    </div>
-  </SectionContainer>
 
-  <SectionContainer isContent={true} flushMobile={true}>
-    <div class="bg-[var(--color-bg)] py-16 sm:py-24 lg:py-28">
-      <h2
-        class="text-balance text-center text-[clamp(4rem,10vw,9rem)] font-bold leading-[0.9] text-[var(--color-primary)]"
+      <div class="h-[clamp(8rem,14vw,14rem)] bg-[var(--color-bg)]" aria-hidden="true"></div>
+
+      <div data-process-second class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
+        <div class="mx-auto grid max-w-3xl gap-10 text-center">
+          <article>
+            <h3
+              class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+            >
+              Enfoque en resultados
+            </h3>
+            <p
+              class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+            >
+              Cada decisión de diseño tiene un objetivo de negocio: atraer,
+              conectar y convertir.
+            </p>
+          </article>
+
+          <article>
+            <h3
+              class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+            >
+              Cercanía y colaboración
+            </h3>
+            <p
+              class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+            >
+              Trabajamos contigo, no para ti. Eres parte activa del proceso.
+            </p>
+          </article>
+
+          <article>
+            <h3
+              class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+            >
+              Autenticidad
+            </h3>
+            <p
+              class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+            >
+              No aplicamos fórmulas mágicas. Buscamos y potenciamos lo que hace
+              única a tu empresa.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div
+        data-process-box
+        class="pointer-events-none absolute left-0 top-0 z-10 hidden w-full will-change-transform"
       >
-        Proceso
-      </h2>
-    </div>
-  </SectionContainer>
-
-  <SectionContainer isContent={true}>
-    <div class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
-      <div class="mx-auto grid max-w-3xl gap-10 text-center">
-        <article>
-          <h3
-            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+        <div
+          data-process-box-surface
+          class="flex items-center justify-center bg-[var(--color-bg)] py-16 sm:py-24 lg:py-28"
+        >
+          <h2
+            class="text-balance text-center text-[clamp(4rem,10vw,9rem)] font-bold leading-[0.9] text-[var(--color-primary)]"
           >
-            Enfoque en resultados
-          </h3>
-          <p
-            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
-          >
-            Cada decisión de diseño tiene un objetivo de negocio: atraer,
-            conectar y convertir.
-          </p>
-        </article>
-
-        <article>
-          <h3
-            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
-          >
-            Cercanía y colaboración
-          </h3>
-          <p
-            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
-          >
-            Trabajamos contigo, no para ti. Eres parte activa del proceso.
-          </p>
-        </article>
-
-        <article>
-          <h3
-            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
-          >
-            Autenticidad
-          </h3>
-          <p
-            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
-          >
-            No aplicamos fórmulas mágicas. Buscamos y potenciamos lo que hace
-            única a tu empresa.
-          </p>
-        </article>
+            Proceso
+          </h2>
+        </div>
       </div>
     </div>
   </SectionContainer>
 </section>
+
+<script is:inline>
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const scenes = document.querySelectorAll("[data-process-scene]");
+
+  scenes.forEach((sceneNode) => {
+    if (!(sceneNode instanceof HTMLElement)) {
+      return;
+    }
+
+    const firstBlock = sceneNode.querySelector("[data-process-first]");
+    const secondBlock = sceneNode.querySelector("[data-process-second]");
+    const processBox = sceneNode.querySelector("[data-process-box]");
+    const processBoxSurface = sceneNode.querySelector("[data-process-box-surface]");
+
+    if (
+      !(firstBlock instanceof HTMLElement) ||
+      !(secondBlock instanceof HTMLElement) ||
+      !(processBox instanceof HTMLElement) ||
+      !(processBoxSurface instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    let startY = 0;
+    let endY = 0;
+    let ticking = false;
+    let startTrigger = 0;
+    let pivotTrigger = 0;
+    let endTrigger = 0;
+
+    const updateBoxPosition = () => {
+      const sectionDistance = endY - startY;
+      let y = startY;
+      const scrollY = window.scrollY;
+
+      if (scrollY >= startTrigger && scrollY < pivotTrigger) {
+        const descentProgress = clamp(
+          (scrollY - startTrigger) / (pivotTrigger - startTrigger),
+          0,
+          1
+        );
+        y = startY + sectionDistance * descentProgress;
+      } else if (scrollY >= pivotTrigger && scrollY <= endTrigger) {
+        const ascentProgress = clamp(
+          (scrollY - pivotTrigger) / (endTrigger - pivotTrigger),
+          0,
+          1
+        );
+        y = endY - sectionDistance * ascentProgress;
+      }
+
+      processBox.style.transform = `translate3d(0, ${y}px, 0)`;
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (ticking) {
+        return;
+      }
+
+      ticking = true;
+      window.requestAnimationFrame(updateBoxPosition);
+    };
+
+    const measureScene = () => {
+      const sceneTop = sceneNode.getBoundingClientRect().top + window.scrollY;
+      const secondTop = secondBlock.getBoundingClientRect().top + window.scrollY;
+
+      processBoxSurface.style.minHeight = `${firstBlock.offsetHeight}px`;
+      startY = firstBlock.offsetTop;
+      endY = secondBlock.offsetTop;
+
+      startTrigger = sceneTop - window.innerHeight;
+      pivotTrigger = secondTop - window.innerHeight * 0.5;
+      endTrigger = secondTop + secondBlock.offsetHeight - window.innerHeight * 0.5;
+
+      processBox.classList.remove("hidden");
+      requestUpdate();
+    };
+
+    measureScene();
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", measureScene);
+    window.addEventListener("orientationchange", measureScene);
+  });
+</script>
