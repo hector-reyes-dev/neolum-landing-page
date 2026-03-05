@@ -22,7 +22,7 @@
   --color-soft: #f2e7e6;
   --color-text: #1a1a1a;
   --color-white: #ffffff;
-  --container-max: 1440px;
+  --container-max: 1920px;
 }
 
 html {
@@ -49,6 +49,7 @@ p {
 }
 
 .container-shell {
+  width: 100%;
   margin-inline: auto;
   max-width: var(--container-max);
 }
