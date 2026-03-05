@@ -7,6 +7,54 @@ import SectionContainer from "../layout/SectionContainer.astro";
   aria-label="Seccion de proceso"
   class="bg-[var(--color-bg)]"
 >
+  <SectionContainer isContent={true}>
+    <div class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
+      <div class="mx-auto grid max-w-3xl gap-10 text-center">
+        <article>
+          <h3
+            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+          >
+            Fundación
+          </h3>
+          <p
+            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+          >
+            Escuchamos, investigamos y definimos la estrategia y el rumbo de tu
+            marca.
+          </p>
+        </article>
+
+        <article>
+          <h3
+            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+          >
+            Desarrollo
+          </h3>
+          <p
+            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+          >
+            Creamos tu identidad visual, diseñamos tu web y planificamos tu
+            contenido.
+          </p>
+        </article>
+
+        <article>
+          <h3
+            class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
+          >
+            Gestión
+          </h3>
+          <p
+            class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
+          >
+            Te acompañamos en la administración digital y la comunicación
+            constante para asegurar el crecimiento.
+          </p>
+        </article>
+      </div>
+    </div>
+  </SectionContainer>
+
   <SectionContainer isContent={true} flushMobile={true}>
     <div class="bg-[var(--color-bg)] py-16 sm:py-24 lg:py-28">
       <h2
@@ -29,7 +77,7 @@ import SectionContainer from "../layout/SectionContainer.astro";
           <p
             class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
           >
-            Cada decision de diseno tiene un objetivo de negocio: atraer,
+            Cada decisión de diseño tiene un objetivo de negocio: atraer,
             conectar y convertir.
           </p>
         </article>
@@ -38,7 +86,7 @@ import SectionContainer from "../layout/SectionContainer.astro";
           <h3
             class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
           >
-            Cercania y colaboracion
+            Cercanía y colaboración
           </h3>
           <p
             class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
@@ -56,8 +104,8 @@ import SectionContainer from "../layout/SectionContainer.astro";
           <p
             class="text-pretty mx-auto mt-2 max-w-[30ch] text-[clamp(1.05rem,1.6vw,1.35rem)] leading-[1.25] text-black"
           >
-            No aplicamos formulas magicas. Buscamos y potenciamos lo que hace
-            unica a tu empresa.
+            No aplicamos fórmulas mágicas. Buscamos y potenciamos lo que hace
+            única a tu empresa.
           </p>
         </article>
       </div>
