@@ -4,33 +4,95 @@ import { navLinks } from "../../constants/site";
 
 <header class="border-y border-[var(--color-primary)] bg-white">
   <div class="container-shell">
-    <div class="flex min-h-[6rem] items-stretch">
-      <a
-        href="#top"
-        aria-label="Ir al inicio"
-        class="flex shrink-0 items-center border-r border-[var(--color-primary)] px-4 sm:px-6"
-      >
-        <img
-          src="/assets/LOGO_NEOLUM_SECUNDARIO.svg"
-          alt="Logo NEO LUM"
-          class="h-8 w-auto sm:h-16"
-          loading="eager"
-        />
-      </a>
+    <div class="relative">
+      <div class="flex min-h-[6rem] items-stretch">
+        <a
+          href="#top"
+          aria-label="Ir al inicio"
+          class="flex shrink-0 items-center border-r border-[var(--color-primary)] px-4 sm:px-6"
+        >
+          <img
+            src="/assets/LOGO_NEOLUM_SECUNDARIO.svg"
+            alt="Logo NEO LUM"
+            class="h-8 w-auto sm:h-16"
+            loading="eager"
+          />
+        </a>
+
+        <div class="flex min-w-0 flex-1 items-center justify-end px-4 md:hidden">
+          <button
+            type="button"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]"
+            aria-expanded="false"
+            aria-controls="mobile-navigation"
+            aria-label="Abrir menu"
+            data-mobile-menu-toggle
+          >
+            <span class="sr-only">Abrir menu</span>
+            <span class="relative h-5 w-6">
+              <span
+                class="absolute left-0 top-0 block h-[2px] w-6 bg-current transition-all duration-300"
+                data-line-1
+              ></span>
+              <span
+                class="absolute left-0 top-[9px] block h-[2px] w-6 bg-current transition-opacity duration-300"
+                data-line-2
+              ></span>
+              <span
+                class="absolute left-0 top-[18px] block h-[2px] w-6 bg-current transition-all duration-300"
+                data-line-3
+              ></span>
+            </span>
+          </button>
+        </div>
+
+        <nav
+          aria-label="Navegacion principal"
+          class="hidden min-w-0 flex-1 items-center justify-end md:flex"
+        >
+          <ul
+            class="flex items-center gap-4 overflow-x-auto px-4 py-3 font-normal whitespace-nowrap sm:gap-12 sm:px-6 sm:text-[0.84rem]"
+          >
+            {
+              navLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-[var(--color-text)] text-[1.2rem] transition-colors hover:text-[var(--color-primary)]"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <div class="flex w-14 shrink-0 items-center justify-center sm:w-16">
+          <img
+            src="/assets/NEOLUM_ICONO.svg"
+            alt=""
+            class="h-8 w-auto sm:h-16"
+            aria-hidden="true"
+            loading="lazy"
+          />
+        </div>
+      </div>
 
       <nav
-        aria-label="Navegacion principal"
-        class="flex min-w-0 flex-1 items-center justify-end"
+        id="mobile-navigation"
+        aria-label="Navegacion principal movil"
+        class="invisible absolute left-0 top-full z-20 w-full translate-y-[-0.5rem] border-t border-[var(--color-primary)] bg-white opacity-0 shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 pointer-events-none md:hidden"
+        data-mobile-menu-panel
       >
-        <ul
-          class="flex items-center gap-4 overflow-x-auto px-4 py-3 font-normal whitespace-nowrap sm:gap-12 sm:px-6 sm:text-[0.84rem]"
-        >
+        <ul class="flex flex-col px-4 py-4">
           {
             navLinks.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-[var(--color-text)] text-[1.2rem] transition-colors hover:text-[var(--color-primary)]"
+                  class="block rounded-md px-3 py-3 text-[1.1rem] text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]"
+                  data-mobile-menu-link
                 >
                   {link.label}
                 </a>
@@ -39,16 +101,72 @@ import { navLinks } from "../../constants/site";
           }
         </ul>
       </nav>
-
-      <div class="flex w-14 shrink-0 items-center justify-center sm:w-16">
-        <img
-          src="/assets/NEOLUM_ICONO.svg"
-          alt=""
-          class="h-8 w-auto sm:h-16"
-          aria-hidden="true"
-          loading="lazy"
-        />
-      </div>
     </div>
   </div>
 </header>
+
+<script is:inline>
+  const toggleButton = document.querySelector("[data-mobile-menu-toggle]");
+  const menuPanel = document.querySelector("[data-mobile-menu-panel]");
+  const menuLinks = document.querySelectorAll("[data-mobile-menu-link]");
+  const line1 = document.querySelector("[data-line-1]");
+  const line2 = document.querySelector("[data-line-2]");
+  const line3 = document.querySelector("[data-line-3]");
+
+  if (toggleButton instanceof HTMLButtonElement && menuPanel instanceof HTMLElement) {
+    const closeMenu = () => {
+      toggleButton.setAttribute("aria-expanded", "false");
+      toggleButton.setAttribute("aria-label", "Abrir menu");
+      menuPanel.classList.add("invisible", "pointer-events-none", "opacity-0", "translate-y-[-0.5rem]");
+      menuPanel.classList.remove("visible", "pointer-events-auto", "opacity-100", "translate-y-0");
+
+      if (line1 instanceof HTMLElement && line2 instanceof HTMLElement && line3 instanceof HTMLElement) {
+        line1.classList.remove("top-[9px]", "rotate-45");
+        line1.classList.add("top-0");
+        line2.classList.remove("opacity-0");
+        line3.classList.remove("top-[9px]", "-rotate-45");
+        line3.classList.add("top-[18px]");
+      }
+    };
+
+    const openMenu = () => {
+      toggleButton.setAttribute("aria-expanded", "true");
+      toggleButton.setAttribute("aria-label", "Cerrar menu");
+      menuPanel.classList.remove("invisible", "pointer-events-none", "opacity-0", "translate-y-[-0.5rem]");
+      menuPanel.classList.add("visible", "pointer-events-auto", "opacity-100", "translate-y-0");
+
+      if (line1 instanceof HTMLElement && line2 instanceof HTMLElement && line3 instanceof HTMLElement) {
+        line1.classList.remove("top-0");
+        line1.classList.add("top-[9px]", "rotate-45");
+        line2.classList.add("opacity-0");
+        line3.classList.remove("top-[18px]");
+        line3.classList.add("top-[9px]", "-rotate-45");
+      }
+    };
+
+    toggleButton.addEventListener("click", () => {
+      const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        closeMenu();
+      }
+    });
+  }
+</script>
