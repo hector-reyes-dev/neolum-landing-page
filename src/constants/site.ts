@@ -6,20 +6,32 @@ export const navLinks = [
   { label: "Contacto", href: "#contacto" }
 ] as const;
 
+export const brandServices = [
+  "Desarrollo de Identidad Visual",
+  "Rebranding y Evolución de Marca",
+  "Consultoría de Posicionamiento de Marca"
+] as const;
+
 export const marketingServices = [
   "Estrategias de Marketing Digital",
-  "Direccion de Arte y Produccion Visual",
-  "Diseno de Contenidos para Redes Sociales"
+  "Dirección de Arte y Producción Visual",
+  "Diseño de Contenidos para Redes Sociales"
 ] as const;
 
 export const webServices = [
-  "Diseno y Desarrollo de Sitios Web",
-  "Optimizacion de Experiencia de Usuario (UX)"
+  "Diseño y Desarrollo de Sitios Web",
+  "Optimización de Experiencia de Usuario (UX)"
+] as const;
+
+export const strategyServices = [
+  "Planificación de Marketing Estratégico",
+  "Análisis de Mercado y Competencia",
+  "Estrategias de Lanzamiento"
 ] as const;
 
 export const contactDetails = {
-  handle: "@NEO_LUM",
-  email: "contacto@neolum.com",
-  phones: ["52 55 373 435 66", "52 55 373 435 66"],
+  handle: "@neolum.con",
+  email: "neolum.consultoria@gmail.com",
+  web:"www.NeoLum.com",
   address: "Ciudad de Mexico, Mexico"
 } as const;

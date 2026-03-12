@@ -1,7 +1,12 @@
 ---
 import SectionContainer from "../layout/SectionContainer.astro";
 import SectionTitle from "../ui/SectionTitle.astro";
-import { marketingServices, webServices } from "../../constants/site";
+import {
+  brandServices,
+  marketingServices,
+  webServices,
+  strategyServices,
+} from "../../constants/site";
 ---
 
 <SectionTitle title="Servicios" />
@@ -12,61 +17,139 @@ import { marketingServices, webServices } from "../../constants/site";
   isContent={true}
   flushMobile={true}
 >
-  <div class="grid md:grid-cols-2">
-    <figure class="overflow-hidden">
-      <img
-        src="/assets/placeholders/PLACEHOLDER_01.webp"
-        alt="Imagen de apoyo para seccion de servicios"
-        class="aspect-square w-full object-cover md:aspect-[4/3]"
-        loading="lazy"
-      />
-    </figure>
+  <div class="grid">
+    <!-- Row 1: Brand (Left) | Marketing (Right) -->
+    <!-- Image 1 starts Left (covering Brand), slides Right on hover -->
+    <div class="group relative grid overflow-hidden md:grid-cols-2">
+      <!-- T2: Construcción y Evolución de Marca (Revealed on hover) -->
+      <div
+        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
+      >
+        <h3
+          class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+        >
+          Construcción y<br />Evolución de Marca
+        </h3>
+        <ul
+          class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
+        >
+          {
+            brandServices.map((service) => (
+              <li class="text-balance">• {service}</li>
+            ))
+          }
+        </ul>
+      </div>
 
-    <div
-      class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:px-12"
-    >
-      <h3
-        class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+      <!-- T1: Marketing Digital y Contenidos (Visible by default) -->
+      <div
+        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
       >
-        Marketing Digital<br />y Contenidos
-      </h3>
-      <ul
-        class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
+        <h3
+          class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+        >
+          Marketing Digital<br />y Contenidos
+        </h3>
+        <ul
+          class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
+        >
+          {
+            marketingServices.map((service) => (
+              <li class="text-balance">• {service}</li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- IMG 1: Covers T2 (Left) initially -->
+      <figure
+        class="absolute inset-y-0 left-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:translate-x-full md:block"
       >
-        {
-          marketingServices.map((service) => (
-            <li class="text-balance">• {service}</li>
-          ))
-        }
-      </ul>
+        <img
+          src="/assets/placeholders/PLACEHOLDER_01.webp"
+          alt="Construcción y Evolución de Marca"
+          class="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </figure>
+
+      <!-- Mobile Image 1: Simple slide reveal if screen is small -->
+      <figure
+        class="relative h-[40vh] overflow-hidden md:hidden"
+      >
+        <img
+          src="/assets/placeholders/PLACEHOLDER_01.webp"
+          alt="Servicios de Marca"
+          class="h-full w-full object-cover"
+        />
+      </figure>
     </div>
 
-    <div
-      class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:px-12"
-    >
-      <h3
-        class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+    <!-- Row 2: Web (Left) | Strategy (Right) -->
+    <!-- Image 2 starts Right (covering Strategy), slides Left on hover -->
+    <div class="group relative grid overflow-hidden md:grid-cols-2 border-t border-[var(--color-primary)]/10">
+      <!-- T3: Presencia Web y Digital (Visible by default) -->
+      <div
+        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
       >
-        Presencia Web<br />y Digital
-      </h3>
-      <ul
-        class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
-      >
-        {
-          webServices.map((service) => (
-            <li class="text-balance">• {service}</li>
-          ))
-        }
-      </ul>
-    </div>
+        <h3
+          class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+        >
+          Presencia Web<br />y Digital
+        </h3>
+        <ul
+          class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
+        >
+          {
+            webServices.map((service) => (
+              <li class="text-balance">• {service}</li>
+            ))
+          }
+        </ul>
+      </div>
 
-    <figure class="overflow-hidden">
-      <img
-        src="/assets/placeholders/PLACEHOLDER_04.webp"
-        alt="Imagen de apoyo para seccion de diseno"
-        class="aspect-square w-full object-cover md:aspect-[4/3]"
-        loading="lazy"
-      />
-    </figure>
+      <!-- T4: Estrategia y Consultoría (Revealed on hover) -->
+      <div
+        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
+      >
+        <h3
+          class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
+        >
+          Estrategia y<br />Consultoría
+        </h3>
+        <ul
+          class="mx-auto mt-8 max-w-[36rem] space-y-5 text-[clamp(1.45rem,2.25vw,2.15rem)] leading-[1.05] text-black"
+        >
+          {
+            strategyServices.map((service) => (
+              <li class="text-balance">• {service}</li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- IMG 2: Covers T4 (Right) initially -->
+      <figure
+        class="absolute inset-y-0 right-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:-translate-x-full md:block"
+      >
+        <img
+          src="/assets/placeholders/PLACEHOLDER_04.webp"
+          alt="Estrategia y Consultoría"
+          class="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </figure>
+
+       <!-- Mobile Image 2: Simple block for mobile -->
+       <figure
+        class="relative h-[40vh] overflow-hidden md:hidden"
+      >
+        <img
+          src="/assets/placeholders/PLACEHOLDER_04.webp"
+          alt="Servicios de Estrategia"
+          class="h-full w-full object-cover"
+        />
+      </figure>
+    </div>
   </div>
 </SectionContainer>

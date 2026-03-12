@@ -9,7 +9,10 @@ import SectionContainer from "../layout/SectionContainer.astro";
 >
   <SectionContainer isContent={true}>
     <div class="relative overflow-hidden" data-process-scene>
-      <div data-process-first class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
+      <div
+        data-process-first
+        class="w-full bg-[var(--color-soft)] py-12 sm:py-16"
+      >
         <div class="mx-auto grid max-w-3xl gap-10 text-center">
           <article>
             <h3
@@ -55,9 +58,16 @@ import SectionContainer from "../layout/SectionContainer.astro";
         </div>
       </div>
 
-      <div class="h-[clamp(8rem,14vw,14rem)] bg-[var(--color-bg)]" aria-hidden="true"></div>
+      <div
+        class="h-[clamp(8rem,14vw,14rem)] bg-[var(--color-bg)]"
+        aria-hidden="true"
+      >
+      </div>
 
-      <div data-process-second class="w-full bg-[var(--color-soft)] py-12 sm:py-16">
+      <div
+        data-process-second
+        class="w-full bg-[var(--color-soft)] py-12 sm:py-16"
+      >
         <div class="mx-auto grid max-w-3xl gap-10 text-center">
           <article>
             <h3
@@ -126,50 +136,54 @@ import SectionContainer from "../layout/SectionContainer.astro";
   const scenes = document.querySelectorAll("[data-process-scene]");
 
   scenes.forEach((sceneNode) => {
-    if (!(sceneNode instanceof HTMLElement)) {
-      return;
-    }
+    if (!(sceneNode instanceof HTMLElement)) return;
 
     const firstBlock = sceneNode.querySelector("[data-process-first]");
     const secondBlock = sceneNode.querySelector("[data-process-second]");
     const processBox = sceneNode.querySelector("[data-process-box]");
-    const processBoxSurface = sceneNode.querySelector("[data-process-box-surface]");
+    const processBoxSurface = sceneNode.querySelector(
+      "[data-process-box-surface]",
+    );
 
     if (
       !(firstBlock instanceof HTMLElement) ||
       !(secondBlock instanceof HTMLElement) ||
       !(processBox instanceof HTMLElement) ||
       !(processBoxSurface instanceof HTMLElement)
-    ) {
+    )
       return;
-    }
 
-    let startY = 0;
-    let endY = 0;
     let ticking = false;
-    let startTrigger = 0;
-    let pivotTrigger = 0;
-    let endTrigger = 0;
+    let phase1Start = 0,
+      phase1End = 0;
+    let phase2Start = 0,
+      phase2End = 0;
+    let yTop = 0,
+      yMiddle = 0,
+      yBottom = 0;
+
+    // How many pixels of scroll each phase takes to complete
+    const PHASE_DURATION = 500;
+    // Offset thresholds (px from viewport edges)
+    const TOP_OFFSET = 250; // banner top this far from viewport top  → phase 1 starts
+    const BOTTOM_OFFSET = 50; // secondBlock bottom this far from viewport bottom → phase 2 starts
 
     const updateBoxPosition = () => {
-      const sectionDistance = endY - startY;
-      let y = startY;
       const scrollY = window.scrollY;
+      let y;
 
-      if (scrollY >= startTrigger && scrollY < pivotTrigger) {
-        const descentProgress = clamp(
-          (scrollY - startTrigger) / (pivotTrigger - startTrigger),
-          0,
-          1
-        );
-        y = startY + sectionDistance * descentProgress;
-      } else if (scrollY >= pivotTrigger && scrollY <= endTrigger) {
-        const ascentProgress = clamp(
-          (scrollY - pivotTrigger) / (endTrigger - pivotTrigger),
-          0,
-          1
-        );
-        y = endY - sectionDistance * ascentProgress;
+      if (scrollY < phase1Start) {
+        y = yTop;
+      } else if (scrollY < phase1End) {
+        const t = clamp((scrollY - phase1Start) / PHASE_DURATION, 0, 1);
+        y = yTop + (yMiddle - yTop) * t;
+      } else if (scrollY < phase2Start) {
+        y = yMiddle;
+      } else if (scrollY < phase2End) {
+        const t = clamp((scrollY - phase2Start) / PHASE_DURATION, 0, 1);
+        y = yMiddle + (yBottom - yMiddle) * t;
+      } else {
+        y = yBottom;
       }
 
       processBox.style.transform = `translate3d(0, ${y}px, 0)`;
@@ -177,32 +191,45 @@ import SectionContainer from "../layout/SectionContainer.astro";
     };
 
     const requestUpdate = () => {
-      if (ticking) {
-        return;
-      }
-
+      if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(updateBoxPosition);
     };
 
     const measureScene = () => {
-      const sceneTop = sceneNode.getBoundingClientRect().top + window.scrollY;
-      const secondTop = secondBlock.getBoundingClientRect().top + window.scrollY;
+      const vh = window.innerHeight;
 
+      // Make banner same height as firstBlock so it covers it exactly
       processBoxSurface.style.minHeight = `${firstBlock.offsetHeight}px`;
-      startY = firstBlock.offsetTop;
-      endY = secondBlock.offsetTop;
 
-      startTrigger = sceneTop - window.innerHeight;
-      pivotTrigger = secondTop - window.innerHeight * 0.5;
-      endTrigger = secondTop + secondBlock.offsetHeight - window.innerHeight * 0.5;
+      // Document-absolute positions
+      const sceneDocTop =
+        sceneNode.getBoundingClientRect().top + window.scrollY;
+      const bannerDocTop = sceneDocTop + firstBlock.offsetTop; // banner starts over firstBlock
+      const secondDocTop = sceneDocTop + secondBlock.offsetTop;
+      const secondDocBottom = secondDocTop + secondBlock.offsetHeight;
+      const bannerH = processBox.offsetHeight;
+
+      // Banner Y positions (px relative to scene, used in translate)
+      yTop = firstBlock.offsetTop; // covers firstBlock → initial state
+      yMiddle = secondBlock.offsetTop; // covers secondBlock → after phase 1
+      yBottom = yTop; // back up to firstBlock position → reveals secondBlock
+
+      // Phase 1: starts when banner top is TOP_OFFSET px from viewport top
+      // bannerDocTop - scrollY = TOP_OFFSET  →  scrollY = bannerDocTop - TOP_OFFSET
+      phase1Start = bannerDocTop - TOP_OFFSET;
+      phase1End = phase1Start + PHASE_DURATION;
+
+      // Phase 2: starts when secondBlock bottom is BOTTOM_OFFSET px from viewport bottom
+      // (secondDocBottom - scrollY) = vh - BOTTOM_OFFSET  →  scrollY = secondDocBottom - vh + BOTTOM_OFFSET
+      phase2Start = secondDocBottom - vh + BOTTOM_OFFSET;
+      phase2End = phase2Start + PHASE_DURATION;
 
       processBox.classList.remove("hidden");
       requestUpdate();
     };
 
     measureScene();
-
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", measureScene);
     window.addEventListener("orientationchange", measureScene);

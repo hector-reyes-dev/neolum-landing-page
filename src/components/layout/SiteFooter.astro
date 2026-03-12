@@ -6,9 +6,9 @@ import { contactDetails } from "../../constants/site";
   <div
     class="container-shell grid gap-10 py-10 px-8 sm:py-16 lg:grid-cols-[40%_60%] lg:justify-between lg:gap-0"
   >
-    <div class="space-y-10 lg:pr-8">
+    <div class="flex h-full flex-col justify-between gap-10 lg:gap-0 lg:pr-8">
       <div class="flex gap-16 text-[clamp(1.5rem,2vw,1.8rem)] font-bold">
-        <ul class="space-y-4 border-r border-white/50 pr-8">
+        <ul class="space-y-4 border-r-2 border-white pr-18">
           <li>
             <a href="#nosotros" class="transition-opacity hover:opacity-80"
               >Nosotros</a
@@ -39,17 +39,8 @@ import { contactDetails } from "../../constants/site";
         <p>Aviso de privacidad</p>
       </div>
 
-      <div class="space-y-1 text-[1.1rem] font-bold text-white/90">
-        <p>{contactDetails.handle}</p>
-        <p>{contactDetails.email}</p>
-        {contactDetails.phones.map((phone: string) => <p>{phone}</p>)}
-        <a
-          href="https://instagram.com/placeholder"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram de NEO LUM"
-          class="inline-flex items-center gap-2 pt-2 text-white transition-opacity hover:opacity-80"
-        >
+      <div class="space-y-1 text-[1.1rem] font-bold text-white">
+        <div class="flex items-center gap-2">
           <svg
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -63,8 +54,10 @@ import { contactDetails } from "../../constants/site";
             <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"
             ></circle>
           </svg>
-          <span class="text-[1.5rem] font-bold">Instagram</span>
-        </a>
+          <p>{contactDetails.handle}</p>
+        </div>
+        <p>{contactDetails.email}</p>
+        <p>{contactDetails.web}</p>
       </div>
     </div>
 
@@ -85,7 +78,7 @@ import { contactDetails } from "../../constants/site";
 
 <div class="bg-white py-2">
   <div class="container-shell text-center">
-    <p class="text-[1.4rem] font-bold text-[var(--color-text)]">
+    <p class="text-[1.2rem] font-medium text-[var(--color-text)]">
       © 2026 All rights reserved to NEO LUM.
     </p>
   </div>
