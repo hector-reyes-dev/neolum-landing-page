@@ -2,10 +2,9 @@
 import SectionContainer from "../layout/SectionContainer.astro";
 
 const slides = [
-  "/assets/placeholders/PLACEHOLDER_05.webp",
-  "/assets/placeholders/PLACEHOLDER_01.webp",
-  "/assets/placeholders/PLACEHOLDER_04.webp",
-  "/assets/placeholders/PLACEHOLDER_02.webp",
+  "/assets/images/carousel11x.webp",
+  "/assets/images/carousel21x.webp",
+  "/assets/images/carousel31x.webp",
 ];
 ---
 
@@ -15,22 +14,20 @@ const slides = [
   isContent={true}
   flushMobile={true}
 >
-  <div class="relative grid bg-white lg:grid-cols-2">
-    <div class="flex items-center bg-white px-5 py-10 sm:px-8">
-      <div class="max-w-[42rem] space-y-8">
+  <div class="relative grid bg-white lg:grid-cols-[58%_42%]">
+    <div class="flex items-center bg-white px-2 sm:px-4 py-4">
+      <div>
         <h1
           class="text-balance text-[clamp(3.8rem,8vw,8rem)] font-bold leading-[0.88] text-[var(--color-primary)]"
         >
           Estrategia, identidad y crecimiento.
         </h1>
-        <div
-          class="max-w-[90%] space-y-4 text-[1.2rem] leading-[1.28] text-black"
-        >
-          <p class="text-pretty">
+        <div class="space-y-4 text-[1.6rem] leading-[1.28] text-black">
+          <p>
             En <span class="font-bold text-[var(--color-primary)]">NEO LUM</span
             >, ayudamos a empresas a destacar en un mercado saturado.
           </p>
-          <p class="text-pretty">
+          <p>
             Creamos identidades visuales autenticas y estrategias de marketing
             que no solo se ven bien, sino que conectan con tu cliente ideal y
             generan resultados reales.
@@ -38,7 +35,7 @@ const slides = [
         </div>
         <a
           href="#contacto"
-          class="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-12 py-6 text-2xl font-semibold text-white transition-opacity hover:opacity-90"
+          class="inline-flex items-center justify-center mt-8 rounded-full bg-[var(--color-primary)] px-12 py-6 text-2xl font-semibold text-white transition-opacity hover:opacity-90"
         >
           Contáctanos
         </a>
@@ -95,7 +92,7 @@ const slides = [
     <img
       src="/assets/NEOLUM_ICONO.svg"
       alt=""
-      class="pointer-events-none absolute bottom-40 left-1/2 hidden h-32 w-auto -translate-x-1/2 lg:block"
+      class="pointer-events-none absolute bottom-40 left-[58%] hidden h-32 w-auto -translate-x-1/2 lg:block"
       aria-hidden="true"
       loading="lazy"
     />

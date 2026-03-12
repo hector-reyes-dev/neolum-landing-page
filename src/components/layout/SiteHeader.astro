@@ -2,14 +2,14 @@
 import { navLinks } from "../../constants/site";
 ---
 
-<header class="border-y border-[var(--color-primary)] bg-white">
+<header class="border-b border-[var(--color-primary)] bg-white">
   <div class="container-shell">
     <div class="relative">
       <div class="flex min-h-[6rem] items-stretch">
         <a
           href="#top"
           aria-label="Ir al inicio"
-          class="flex shrink-0 items-center border-r border-[var(--color-primary)] px-4 sm:px-6"
+          class="flex shrink-0 items-center border-r border-[var(--color-primary)] px-6 sm:px-8"
         >
           <img
             src="/assets/LOGO_NEOLUM_SECUNDARIO.svg"
@@ -19,7 +19,9 @@ import { navLinks } from "../../constants/site";
           />
         </a>
 
-        <div class="flex min-w-0 flex-1 items-center justify-end px-4 md:hidden">
+        <div
+          class="flex min-w-0 flex-1 items-center justify-end px-4 md:hidden"
+        >
           <button
             type="button"
             class="inline-flex h-11 w-11 items-center justify-center rounded-md text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]"
@@ -32,16 +34,13 @@ import { navLinks } from "../../constants/site";
             <span class="relative h-5 w-6">
               <span
                 class="absolute left-0 top-0 block h-[2px] w-6 bg-current transition-all duration-300"
-                data-line-1
-              ></span>
+                data-line-1></span>
               <span
                 class="absolute left-0 top-[9px] block h-[2px] w-6 bg-current transition-opacity duration-300"
-                data-line-2
-              ></span>
+                data-line-2></span>
               <span
                 class="absolute left-0 top-[18px] block h-[2px] w-6 bg-current transition-all duration-300"
-                data-line-3
-              ></span>
+                data-line-3></span>
             </span>
           </button>
         </div>
@@ -58,7 +57,7 @@ import { navLinks } from "../../constants/site";
                 <li>
                   <a
                     href={link.href}
-                    class="text-[var(--color-text)] text-[1.2rem] transition-colors hover:text-[var(--color-primary)]"
+                    class="text-[var(--color-text)] text-[1.5rem] font-medium transition-colors hover:text-[var(--color-primary)]"
                   >
                     {link.label}
                   </a>
@@ -113,14 +112,31 @@ import { navLinks } from "../../constants/site";
   const line2 = document.querySelector("[data-line-2]");
   const line3 = document.querySelector("[data-line-3]");
 
-  if (toggleButton instanceof HTMLButtonElement && menuPanel instanceof HTMLElement) {
+  if (
+    toggleButton instanceof HTMLButtonElement &&
+    menuPanel instanceof HTMLElement
+  ) {
     const closeMenu = () => {
       toggleButton.setAttribute("aria-expanded", "false");
       toggleButton.setAttribute("aria-label", "Abrir menu");
-      menuPanel.classList.add("invisible", "pointer-events-none", "opacity-0", "translate-y-[-0.5rem]");
-      menuPanel.classList.remove("visible", "pointer-events-auto", "opacity-100", "translate-y-0");
+      menuPanel.classList.add(
+        "invisible",
+        "pointer-events-none",
+        "opacity-0",
+        "translate-y-[-0.5rem]",
+      );
+      menuPanel.classList.remove(
+        "visible",
+        "pointer-events-auto",
+        "opacity-100",
+        "translate-y-0",
+      );
 
-      if (line1 instanceof HTMLElement && line2 instanceof HTMLElement && line3 instanceof HTMLElement) {
+      if (
+        line1 instanceof HTMLElement &&
+        line2 instanceof HTMLElement &&
+        line3 instanceof HTMLElement
+      ) {
         line1.classList.remove("top-[9px]", "rotate-45");
         line1.classList.add("top-0");
         line2.classList.remove("opacity-0");
@@ -132,10 +148,24 @@ import { navLinks } from "../../constants/site";
     const openMenu = () => {
       toggleButton.setAttribute("aria-expanded", "true");
       toggleButton.setAttribute("aria-label", "Cerrar menu");
-      menuPanel.classList.remove("invisible", "pointer-events-none", "opacity-0", "translate-y-[-0.5rem]");
-      menuPanel.classList.add("visible", "pointer-events-auto", "opacity-100", "translate-y-0");
+      menuPanel.classList.remove(
+        "invisible",
+        "pointer-events-none",
+        "opacity-0",
+        "translate-y-[-0.5rem]",
+      );
+      menuPanel.classList.add(
+        "visible",
+        "pointer-events-auto",
+        "opacity-100",
+        "translate-y-0",
+      );
 
-      if (line1 instanceof HTMLElement && line2 instanceof HTMLElement && line3 instanceof HTMLElement) {
+      if (
+        line1 instanceof HTMLElement &&
+        line2 instanceof HTMLElement &&
+        line3 instanceof HTMLElement
+      ) {
         line1.classList.remove("top-0");
         line1.classList.add("top-[9px]", "rotate-45");
         line2.classList.add("opacity-0");

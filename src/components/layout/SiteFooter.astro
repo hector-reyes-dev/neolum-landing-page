@@ -4,13 +4,11 @@ import { contactDetails } from "../../constants/site";
 
 <footer class="bg-[var(--color-primary)] text-white">
   <div
-    class="container-shell grid gap-10 py-10 px-8 sm:py-12 lg:grid-cols-[1fr_auto] lg:items-start"
+    class="container-shell grid gap-10 py-10 px-8 sm:py-16 lg:grid-cols-[40%_60%] lg:justify-between lg:gap-0"
   >
-    <div class="space-y-8">
-      <div
-        class="grid grid-cols-2 gap-8 text-[clamp(1rem,1.35vw,1.25rem)] font-semibold"
-      >
-        <ul class="space-y-2">
+    <div class="space-y-10 lg:pr-8">
+      <div class="flex gap-16 text-[clamp(1.5rem,2vw,1.8rem)] font-bold">
+        <ul class="space-y-4 border-r border-white/50 pr-8">
           <li>
             <a href="#nosotros" class="transition-opacity hover:opacity-80"
               >Nosotros</a
@@ -22,7 +20,7 @@ import { contactDetails } from "../../constants/site";
             >
           </li>
         </ul>
-        <ul class="space-y-2">
+        <ul class="space-y-4">
           <li>
             <a href="#proyectos" class="transition-opacity hover:opacity-80"
               >Proyectos</a
@@ -36,12 +34,12 @@ import { contactDetails } from "../../constants/site";
         </ul>
       </div>
 
-      <div class="space-y-1 text-sm text-white/90">
-        <p>Terminos y condiciones</p>
+      <div class="space-y-1 text-[1.2rem] text-white/90 font-bold">
+        <p>Términos y condiciones</p>
         <p>Aviso de privacidad</p>
       </div>
 
-      <div class="space-y-1 text-sm text-white/90">
+      <div class="space-y-1 text-[1.1rem] font-bold text-white/90">
         <p>{contactDetails.handle}</p>
         <p>{contactDetails.email}</p>
         {contactDetails.phones.map((phone: string) => <p>{phone}</p>)}
@@ -60,11 +58,12 @@ import { contactDetails } from "../../constants/site";
             stroke="currentColor"
             stroke-width="1.8"
           >
-            <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-            <circle cx="12" cy="12" r="4.2" />
-            <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none" />
+            <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"
+            ></circle>
           </svg>
-          <span class="text-sm font-semibold">Instagram</span>
+          <span class="text-[1.5rem] font-bold">Instagram</span>
         </a>
       </div>
     </div>
@@ -72,12 +71,12 @@ import { contactDetails } from "../../constants/site";
     <a
       href="#top"
       aria-label="Volver arriba"
-      class="inline-flex justify-start lg:justify-end"
+      class="flex items-end justify-end w-full overflow-hidden"
     >
       <img
         src="/assets/LOGO_NEOLUM_PRINCIPAL.svg"
         alt="Logo NEO LUM"
-        class="h-auto w-[24rem] max-w-full sm:w-[32rem] lg:w-[50rem]"
+        class="h-full"
         loading="lazy"
       />
     </a>
@@ -86,7 +85,7 @@ import { contactDetails } from "../../constants/site";
 
 <div class="bg-white py-2">
   <div class="container-shell text-center">
-    <p class="text-4 text-[var(--color-text)]">
+    <p class="text-[1.4rem] font-bold text-[var(--color-text)]">
       © 2026 All rights reserved to NEO LUM.
     </p>
   </div>
