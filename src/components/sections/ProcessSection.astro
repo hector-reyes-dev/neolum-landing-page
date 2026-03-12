@@ -7,13 +7,21 @@ import SectionContainer from "../layout/SectionContainer.astro";
   aria-label="Seccion de proceso"
   class="bg-[var(--color-bg)]"
 >
-  <SectionContainer isContent={true}>
-    <div class="relative overflow-hidden" data-process-scene>
+  <SectionContainer isContent={true} flushMobile={true}>
+    <div class="group/process relative overflow-hidden" data-process-container>
+      <!-- Block 1: Fundación, Desarrollo, Gestión -->
       <div
-        data-process-first
-        class="w-full bg-[var(--color-soft)] py-12 sm:py-16"
+        data-hover-zone="1"
+        class="relative z-0 w-full overflow-hidden bg-[var(--color-soft)] py-12 sm:py-20 lg:py-24"
       >
-        <div class="mx-auto grid max-w-3xl gap-10 text-center">
+        <!-- Background logo watermark -->
+        <img
+          src="/assets/LOGO_NEOLUM_SECUNDARIO_WHITE.svg"
+          alt=""
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-x-0 inset-y-0 m-auto w-[85%] max-w-none opacity-20 select-none"
+        />
+        <div class="relative mx-auto grid max-w-3xl gap-10 text-center">
           <article>
             <h3
               class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
@@ -27,7 +35,6 @@ import SectionContainer from "../layout/SectionContainer.astro";
               tu marca.
             </p>
           </article>
-
           <article>
             <h3
               class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
@@ -41,7 +48,6 @@ import SectionContainer from "../layout/SectionContainer.astro";
               contenido.
             </p>
           </article>
-
           <article>
             <h3
               class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
@@ -58,15 +64,10 @@ import SectionContainer from "../layout/SectionContainer.astro";
         </div>
       </div>
 
+      <!-- Block 2: Enfoque, Cercanía, Autenticidad -->
       <div
-        class="h-[clamp(8rem,14vw,14rem)] bg-[var(--color-bg)]"
-        aria-hidden="true"
-      >
-      </div>
-
-      <div
-        data-process-second
-        class="w-full bg-[var(--color-soft)] py-12 sm:py-16"
+        data-hover-zone="2"
+        class="relative z-0 w-full bg-[var(--color-soft)] py-12 sm:py-20 lg:py-24"
       >
         <div class="mx-auto grid max-w-3xl gap-10 text-center">
           <article>
@@ -82,7 +83,6 @@ import SectionContainer from "../layout/SectionContainer.astro";
               conectar y convertir.
             </p>
           </article>
-
           <article>
             <h3
               class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
@@ -95,7 +95,6 @@ import SectionContainer from "../layout/SectionContainer.astro";
               Trabajamos contigo, no para ti. Eres parte activa del proceso.
             </p>
           </article>
-
           <article>
             <h3
               class="text-balance text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.95] text-[var(--color-primary)]"
@@ -112,126 +111,55 @@ import SectionContainer from "../layout/SectionContainer.astro";
         </div>
       </div>
 
+      <!-- The Sliding Banner -->
       <div
-        data-process-box
-        class="pointer-events-none absolute left-0 top-0 z-10 hidden w-full will-change-transform"
+        data-process-banner
+        class="pointer-events-none absolute left-0 top-0 z-10 flex h-1/2 w-full items-center justify-center gap-4 bg-[var(--color-bg)] px-6 transition-transform duration-700 ease-in-out md:gap-8"
       >
-        <div
-          data-process-box-surface
-          class="flex items-center justify-center bg-[var(--color-bg)] py-16 sm:py-24 lg:py-28"
+        <img
+          src="/assets/NEOLUM_ICONO_WHITE.svg"
+          alt=""
+          aria-hidden="true"
+          class="h-[clamp(4rem,10vw,9rem)] w-auto shrink-0 opacity-80"
+        />
+        <h2
+          class="text-balance text-center text-[clamp(4rem,10vw,9rem)] font-bold leading-[0.9] text-[var(--color-primary)]"
         >
-          <h2
-            class="text-balance text-center text-[clamp(4rem,10vw,9rem)] font-bold leading-[0.9] text-[var(--color-primary)]"
-          >
-            Proceso
-          </h2>
-        </div>
+          Proceso
+        </h2>
+        <img
+          src="/assets/NEOLUM_ICONO_WHITE.svg"
+          alt=""
+          aria-hidden="true"
+          class="h-[clamp(4rem,10vw,9rem)] w-auto shrink-0 opacity-80"
+        />
       </div>
     </div>
   </SectionContainer>
 </section>
 
 <script is:inline>
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-  const scenes = document.querySelectorAll("[data-process-scene]");
+  const container = document.querySelector("[data-process-container]");
+  const banner = document.querySelector("[data-process-banner]");
+  const zones = document.querySelectorAll("[data-hover-zone]");
 
-  scenes.forEach((sceneNode) => {
-    if (!(sceneNode instanceof HTMLElement)) return;
+  if (container && banner) {
+    zones.forEach((zone) => {
+      zone.addEventListener("mouseenter", () => {
+        const id = zone.getAttribute("data-hover-zone");
+        if (id === "1") {
+          // Hover top block -> slide banner DOWN to show block 1
+          banner.style.transform = "translateY(100%)";
+        } else if (id === "2") {
+          // Hover bottom block -> slide banner UP to show block 2
+          banner.style.transform = "translateY(0%)";
+        }
+      });
+    });
 
-    const firstBlock = sceneNode.querySelector("[data-process-first]");
-    const secondBlock = sceneNode.querySelector("[data-process-second]");
-    const processBox = sceneNode.querySelector("[data-process-box]");
-    const processBoxSurface = sceneNode.querySelector(
-      "[data-process-box-surface]",
-    );
-
-    if (
-      !(firstBlock instanceof HTMLElement) ||
-      !(secondBlock instanceof HTMLElement) ||
-      !(processBox instanceof HTMLElement) ||
-      !(processBoxSurface instanceof HTMLElement)
-    )
-      return;
-
-    let ticking = false;
-    let phase1Start = 0,
-      phase1End = 0;
-    let phase2Start = 0,
-      phase2End = 0;
-    let yTop = 0,
-      yMiddle = 0,
-      yBottom = 0;
-
-    // How many pixels of scroll each phase takes to complete
-    const PHASE_DURATION = 500;
-    // Offset thresholds (px from viewport edges)
-    const TOP_OFFSET = 250; // banner top this far from viewport top  → phase 1 starts
-    const BOTTOM_OFFSET = 50; // secondBlock bottom this far from viewport bottom → phase 2 starts
-
-    const updateBoxPosition = () => {
-      const scrollY = window.scrollY;
-      let y;
-
-      if (scrollY < phase1Start) {
-        y = yTop;
-      } else if (scrollY < phase1End) {
-        const t = clamp((scrollY - phase1Start) / PHASE_DURATION, 0, 1);
-        y = yTop + (yMiddle - yTop) * t;
-      } else if (scrollY < phase2Start) {
-        y = yMiddle;
-      } else if (scrollY < phase2End) {
-        const t = clamp((scrollY - phase2Start) / PHASE_DURATION, 0, 1);
-        y = yMiddle + (yBottom - yMiddle) * t;
-      } else {
-        y = yBottom;
-      }
-
-      processBox.style.transform = `translate3d(0, ${y}px, 0)`;
-      ticking = false;
-    };
-
-    const requestUpdate = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(updateBoxPosition);
-    };
-
-    const measureScene = () => {
-      const vh = window.innerHeight;
-
-      // Make banner same height as firstBlock so it covers it exactly
-      processBoxSurface.style.minHeight = `${firstBlock.offsetHeight}px`;
-
-      // Document-absolute positions
-      const sceneDocTop =
-        sceneNode.getBoundingClientRect().top + window.scrollY;
-      const bannerDocTop = sceneDocTop + firstBlock.offsetTop; // banner starts over firstBlock
-      const secondDocTop = sceneDocTop + secondBlock.offsetTop;
-      const secondDocBottom = secondDocTop + secondBlock.offsetHeight;
-      const bannerH = processBox.offsetHeight;
-
-      // Banner Y positions (px relative to scene, used in translate)
-      yTop = firstBlock.offsetTop; // covers firstBlock → initial state
-      yMiddle = secondBlock.offsetTop; // covers secondBlock → after phase 1
-      yBottom = yTop; // back up to firstBlock position → reveals secondBlock
-
-      // Phase 1: starts when banner top is TOP_OFFSET px from viewport top
-      // bannerDocTop - scrollY = TOP_OFFSET  →  scrollY = bannerDocTop - TOP_OFFSET
-      phase1Start = bannerDocTop - TOP_OFFSET;
-      phase1End = phase1Start + PHASE_DURATION;
-
-      // Phase 2: starts when secondBlock bottom is BOTTOM_OFFSET px from viewport bottom
-      // (secondDocBottom - scrollY) = vh - BOTTOM_OFFSET  →  scrollY = secondDocBottom - vh + BOTTOM_OFFSET
-      phase2Start = secondDocBottom - vh + BOTTOM_OFFSET;
-      phase2End = phase2Start + PHASE_DURATION;
-
-      processBox.classList.remove("hidden");
-      requestUpdate();
-    };
-
-    measureScene();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", measureScene);
-    window.addEventListener("orientationchange", measureScene);
-  });
+    // Reset to cover block 1 when leaving the entire section
+    container.addEventListener("mouseleave", () => {
+      banner.style.transform = "translateY(0%)";
+    });
+  }
 </script>
