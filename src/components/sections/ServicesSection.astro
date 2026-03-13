@@ -18,13 +18,13 @@ import {
   flushMobile={true}
 >
   <div class="grid">
+    <!-- Row 1: Brand (Left) | Marketing (Right) -->
+    <!-- Image starts on the LEFT, slides RIGHT only when hovering that left quadrant -->
     <div class="relative grid overflow-hidden md:grid-cols-2">
-      <!-- Row 1: Group trigger on Left column only -->
-      <div class="group contents">
-        <!-- T2: Construcción y Evolución de Marca (Revealed on hover) -->
-        <div
-          class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
-        >
+      <!-- T1: Construcción y Evolución de Marca (under image, revealed on hover) -->
+      <div
+        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
+      >
         <h3
           class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
         >
@@ -41,7 +41,7 @@ import {
         </ul>
       </div>
 
-      <!-- T1: Marketing Digital y Contenidos (Visible by default) -->
+      <!-- T2: Marketing Digital y Contenidos (always visible) -->
       <div
         class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
       >
@@ -61,23 +61,21 @@ import {
         </ul>
       </div>
 
-        <!-- IMG 1: Covers T2 (Left) initially -->
-        <figure
-          class="absolute inset-y-0 left-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:translate-x-full md:block"
-        >
-          <img
-            src="/assets/placeholders/PLACEHOLDER_01.webp"
-            alt="Construcción y Evolución de Marca"
-            class="h-full w-full object-cover"
-            loading="lazy"
-          />
-        </figure>
-      </div>
-
-      <!-- Mobile Image 1: Simple slide reveal if screen is small -->
+      <!-- IMG 1: positioned on the LEFT, only triggers on hovering itself -->
       <figure
-        class="relative h-[40vh] overflow-hidden md:hidden"
+        data-service-img="row1"
+        class="absolute inset-y-0 left-0 hidden w-1/2 translate-x-0 cursor-default transition-transform duration-700 ease-in-out md:block"
       >
+        <img
+          src="/assets/placeholders/PLACEHOLDER_01.webp"
+          alt="Construcción y Evolución de Marca"
+          class="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </figure>
+
+      <!-- Mobile Image 1 -->
+      <figure class="relative h-[40vh] overflow-hidden md:hidden">
         <img
           src="/assets/placeholders/PLACEHOLDER_01.webp"
           alt="Servicios de Marca"
@@ -86,13 +84,15 @@ import {
       </figure>
     </div>
 
-    <div class="relative grid overflow-hidden md:grid-cols-2 border-t border-[var(--color-primary)]/10">
-      <!-- Row 2: Group trigger on Right column only -->
-      <div class="group contents">
-        <!-- T3: Presencia Web y Digital (Visible by default) -->
-        <div
-          class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
-        >
+    <!-- Row 2: Web (Left) | Strategy (Right) -->
+    <!-- Image starts on the RIGHT, slides LEFT only when hovering that right quadrant -->
+    <div
+      class="relative grid overflow-hidden md:grid-cols-2 border-t border-[var(--color-primary)]/10"
+    >
+      <!-- T3: Presencia Web y Digital (always visible) -->
+      <div
+        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
+      >
         <h3
           class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
         >
@@ -109,7 +109,7 @@ import {
         </ul>
       </div>
 
-      <!-- T4: Estrategia y Consultoría (Revealed on hover) -->
+      <!-- T4: Estrategia y Consultoría (under image, revealed on hover) -->
       <div
         class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
       >
@@ -129,23 +129,21 @@ import {
         </ul>
       </div>
 
-        <!-- IMG 2: Covers T4 (Right) initially -->
-        <figure
-          class="absolute inset-y-0 right-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:-translate-x-full md:block"
-        >
-          <img
-            src="/assets/placeholders/PLACEHOLDER_04.webp"
-            alt="Estrategia y Consultoría"
-            class="h-full w-full object-cover"
-            loading="lazy"
-          />
-        </figure>
-      </div>
-
-       <!-- Mobile Image 2: Simple block for mobile -->
-       <figure
-        class="relative h-[40vh] overflow-hidden md:hidden"
+      <!-- IMG 2: positioned on the RIGHT, only triggers on hovering itself -->
+      <figure
+        data-service-img="row2"
+        class="absolute inset-y-0 right-0 hidden w-1/2 translate-x-0 cursor-default transition-transform duration-700 ease-in-out md:block"
       >
+        <img
+          src="/assets/placeholders/PLACEHOLDER_04.webp"
+          alt="Estrategia y Consultoría"
+          class="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </figure>
+
+      <!-- Mobile Image 2 -->
+      <figure class="relative h-[40vh] overflow-hidden md:hidden">
         <img
           src="/assets/placeholders/PLACEHOLDER_04.webp"
           alt="Servicios de Estrategia"
@@ -155,3 +153,27 @@ import {
     </div>
   </div>
 </SectionContainer>
+
+<script is:inline>
+  // Hover only fires when cursor is over the figure (the image quadrant)
+  const img1 = document.querySelector('[data-service-img="row1"]');
+  const img2 = document.querySelector('[data-service-img="row2"]');
+
+  if (img1) {
+    img1.addEventListener("mouseenter", () => {
+      img1.style.transform = "translateX(100%)";
+    });
+    img1.addEventListener("mouseleave", () => {
+      img1.style.transform = "translateX(0%)";
+    });
+  }
+
+  if (img2) {
+    img2.addEventListener("mouseenter", () => {
+      img2.style.transform = "translateX(-100%)";
+    });
+    img2.addEventListener("mouseleave", () => {
+      img2.style.transform = "translateX(0%)";
+    });
+  }
+</script>
