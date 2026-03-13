@@ -14,11 +14,11 @@ const slides = [
   isContent={true}
   flushMobile={true}
 >
-  <div class="relative grid bg-white lg:grid-cols-[58%_42%]">
-    <div class="flex items-center bg-white px-2 sm:px-4 py-4">
+  <div class="relative grid overflow-hidden bg-white lg:grid-cols-[58%_42%]">
+    <div class="flex items-center bg-white px-4 py-8 sm:px-8 sm:py-10">
       <div>
         <h1
-          class="text-balance text-[clamp(4.8rem,10vw,10rem)] font-bold leading-[0.88] text-[var(--color-primary)]"
+          class="text-balance text-[clamp(3.6rem,10vw,10rem)] font-bold leading-[0.88] text-[var(--color-primary)]"
         >
           Estrategia, identidad y crecimiento.
         </h1>
@@ -42,7 +42,7 @@ const slides = [
       </div>
     </div>
 
-    <div class="slider-wrapper">
+    <div class="slider-wrapper min-h-[55vw] overflow-hidden lg:min-h-0">
       <div class="slider relative h-full overflow-hidden bg-white">
         {
           slides.map((_, index) => (
