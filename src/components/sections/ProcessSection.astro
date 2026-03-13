@@ -8,11 +8,11 @@ import SectionContainer from "../layout/SectionContainer.astro";
   class="bg-[var(--color-bg)]"
 >
   <SectionContainer isContent={true} flushMobile={true}>
-    <div class="group/process relative overflow-hidden" data-process-container>
+    <div class="group/process relative grid grid-rows-2 overflow-hidden" data-process-container>
       <!-- Block 1: Fundación, Desarrollo, Gestión -->
       <div
         data-hover-zone="1"
-        class="relative z-0 w-full overflow-hidden bg-[var(--color-soft)] py-12 sm:py-20 lg:py-24"
+        class="relative z-0 flex w-full flex-col justify-center overflow-hidden bg-[var(--color-soft)] py-12 sm:py-20 lg:py-24"
       >
         <!-- Background logo watermark -->
         <img
@@ -67,7 +67,7 @@ import SectionContainer from "../layout/SectionContainer.astro";
       <!-- Block 2: Enfoque, Cercanía, Autenticidad -->
       <div
         data-hover-zone="2"
-        class="relative z-0 w-full bg-[var(--color-soft)] py-12 sm:py-20 lg:py-24"
+        class="relative z-0 flex w-full flex-col justify-center bg-[var(--color-soft)] py-12 sm:py-20 lg:py-24"
       >
         <div class="mx-auto grid max-w-3xl gap-10 text-center">
           <article>

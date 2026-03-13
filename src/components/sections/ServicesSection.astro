@@ -18,13 +18,13 @@ import {
   flushMobile={true}
 >
   <div class="grid">
-    <!-- Row 1: Brand (Left) | Marketing (Right) -->
-    <!-- Image 1 starts Left (covering Brand), slides Right on hover -->
-    <div class="group relative grid overflow-hidden md:grid-cols-2">
-      <!-- T2: Construcción y Evolución de Marca (Revealed on hover) -->
-      <div
-        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
-      >
+    <div class="relative grid overflow-hidden md:grid-cols-2">
+      <!-- Row 1: Group trigger on Left column only -->
+      <div class="group contents">
+        <!-- T2: Construcción y Evolución de Marca (Revealed on hover) -->
+        <div
+          class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
+        >
         <h3
           class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
         >
@@ -61,17 +61,18 @@ import {
         </ul>
       </div>
 
-      <!-- IMG 1: Covers T2 (Left) initially -->
-      <figure
-        class="absolute inset-y-0 left-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:translate-x-full md:block"
-      >
-        <img
-          src="/assets/placeholders/PLACEHOLDER_01.webp"
-          alt="Construcción y Evolución de Marca"
-          class="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </figure>
+        <!-- IMG 1: Covers T2 (Left) initially -->
+        <figure
+          class="absolute inset-y-0 left-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:translate-x-full md:block"
+        >
+          <img
+            src="/assets/placeholders/PLACEHOLDER_01.webp"
+            alt="Construcción y Evolución de Marca"
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </figure>
+      </div>
 
       <!-- Mobile Image 1: Simple slide reveal if screen is small -->
       <figure
@@ -85,13 +86,13 @@ import {
       </figure>
     </div>
 
-    <!-- Row 2: Web (Left) | Strategy (Right) -->
-    <!-- Image 2 starts Right (covering Strategy), slides Left on hover -->
-    <div class="group relative grid overflow-hidden md:grid-cols-2 border-t border-[var(--color-primary)]/10">
-      <!-- T3: Presencia Web y Digital (Visible by default) -->
-      <div
-        class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
-      >
+    <div class="relative grid overflow-hidden md:grid-cols-2 border-t border-[var(--color-primary)]/10">
+      <!-- Row 2: Group trigger on Right column only -->
+      <div class="group contents">
+        <!-- T3: Presencia Web y Digital (Visible by default) -->
+        <div
+          class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
+        >
         <h3
           class="text-center text-[clamp(2rem,3.8vw,3.4rem)] font-bold leading-[0.92] text-[var(--color-primary)]"
         >
@@ -128,17 +129,18 @@ import {
         </ul>
       </div>
 
-      <!-- IMG 2: Covers T4 (Right) initially -->
-      <figure
-        class="absolute inset-y-0 right-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:-translate-x-full md:block"
-      >
-        <img
-          src="/assets/placeholders/PLACEHOLDER_04.webp"
-          alt="Estrategia y Consultoría"
-          class="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </figure>
+        <!-- IMG 2: Covers T4 (Right) initially -->
+        <figure
+          class="absolute inset-y-0 right-0 hidden w-1/2 translate-x-0 transition-transform duration-700 ease-in-out group-hover:-translate-x-full md:block"
+        >
+          <img
+            src="/assets/placeholders/PLACEHOLDER_04.webp"
+            alt="Estrategia y Consultoría"
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </figure>
+      </div>
 
        <!-- Mobile Image 2: Simple block for mobile -->
        <figure
