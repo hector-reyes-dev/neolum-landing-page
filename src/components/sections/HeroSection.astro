@@ -5,6 +5,7 @@ const slides = [
   "/assets/images/carousel11x.webp",
   "/assets/images/carousel21x.webp",
   "/assets/images/carousel31x.webp",
+  "/assets/images/carousel41x.webp",
 ];
 ---
 
@@ -92,7 +93,7 @@ const slides = [
     <img
       src="/assets/NEOLUM_ICONO.svg"
       alt=""
-      class="pointer-events-none absolute bottom-40 left-[58%] hidden h-32 w-auto -translate-x-1/2 lg:block"
+      class="hero-diamond pointer-events-none absolute bottom-40 left-[58%] h-32 w-auto -translate-x-1/2"
       aria-hidden="true"
       loading="lazy"
     />
@@ -116,6 +117,16 @@ const slides = [
   .slide-dot {
     border-color: color-mix(in srgb, var(--color-white) 55%, transparent);
     background-color: transparent;
+  }
+
+  .hero-diamond {
+    display: none;
+  }
+
+  @media (min-width: 64rem) {
+    .hero-diamond {
+      display: block;
+    }
   }
 
   .slider-wrapper:has(#slide-0:checked) label[for="slide-0"],

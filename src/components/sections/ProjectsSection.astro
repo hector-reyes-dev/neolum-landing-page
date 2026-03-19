@@ -1,5 +1,37 @@
 ---
 import SectionContainer from "../layout/SectionContainer.astro";
+
+interface ProjectItem {
+  name: string;
+  backgroundSrc: string;
+  backgroundAlt: string;
+  logoSrc: string;
+  logoAlt: string;
+}
+
+const projects: ProjectItem[] = [
+  {
+    name: "Nevia",
+    backgroundSrc: "/assets/projects/proyectos-nevia-back-21x.webp",
+    backgroundAlt: "Fotografia del proyecto Nevia",
+    logoSrc: "/assets/projects/proyectos-nevia-front-2.svg",
+    logoAlt: "Logo del proyecto Nevia",
+  },
+  {
+    name: "Simple Meals",
+    backgroundSrc: "/assets/projects/proyectos-simple-meals-back-11x.webp",
+    backgroundAlt: "Fotografia del proyecto Simple Meals",
+    logoSrc: "/assets/projects/proyectos-simple-meals-front-1.svg",
+    logoAlt: "Logo del proyecto Simple Meals",
+  },
+  {
+    name: "Latosa",
+    backgroundSrc: "/assets/projects/proyectos-latosa-back-31x.webp",
+    backgroundAlt: "Fotografia del proyecto Latosa",
+    logoSrc: "/assets/projects/proyectos-latosa-front-3.svg",
+    logoAlt: "Logo del proyecto Latosa",
+  },
+];
 ---
 
 <SectionContainer
@@ -19,46 +51,45 @@ import SectionContainer from "../layout/SectionContainer.astro";
       </h3>
     </article>
 
-    <figure class="relative aspect-square overflow-hidden">
-      <img
-        src="/assets/placeholders/PLACEHOLDER_03.webp"
-        alt="Proyecto Nevia"
-        class="h-full w-full object-cover"
-        loading="lazy"
-      />
-      <figcaption
-        class="pointer-events-none absolute inset-0 flex items-center justify-center text-center text-[clamp(2.8rem,8vw,6rem)] font-bold text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.38)]"
-      >
-        NEVIA
-      </figcaption>
-    </figure>
+    {
+      projects.map((project) => (
+        <figure class="project-card group relative aspect-square overflow-hidden">
+          <img
+            src={project.backgroundSrc}
+            alt={project.backgroundAlt}
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
 
-    <figure class="relative aspect-square overflow-hidden">
-      <img
-        src="/assets/placeholders/PLACEHOLDER_01.webp"
-        alt="Proyecto Simple Meals"
-        class="h-full w-full object-cover"
-        loading="lazy"
-      />
-      <figcaption
-        class="pointer-events-none absolute inset-0 flex items-center justify-center px-6 text-center text-[clamp(2.5rem,7vw,5rem)] font-semibold leading-[0.82] text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]"
-      >
-        simple<br />meals
-      </figcaption>
-    </figure>
+          <span class="project-blur-layer absolute inset-0" aria-hidden="true" />
 
-    <figure class="relative aspect-square overflow-hidden">
-      <img
-        src="/assets/placeholders/PLACEHOLDER_02.webp"
-        alt="Proyecto Latosa"
-        class="h-full w-full object-cover"
-        loading="lazy"
-      />
-      <figcaption
-        class="pointer-events-none absolute inset-0 flex items-center justify-center px-6 text-center text-[clamp(3rem,8vw,6rem)] font-bold italic leading-[0.8] text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.42)]"
-      >
-        latosa
-      </figcaption>
-    </figure>
+          <figcaption class="pointer-events-none absolute inset-0">
+            <img
+              src={project.logoSrc}
+              alt={project.logoAlt}
+              class="h-full w-full object-contain"
+              loading="lazy"
+            />
+          </figcaption>
+        </figure>
+      ))
+    }
   </div>
 </SectionContainer>
+
+<style>
+  .project-blur-layer {
+    backdrop-filter: blur(0);
+    transition: backdrop-filter 420ms ease-in-out;
+  }
+
+  @media (hover: hover) {
+    .project-card .project-blur-layer {
+      backdrop-filter: blur(10px);
+    }
+
+    .project-card:hover .project-blur-layer {
+      backdrop-filter: blur(0);
+    }
+  }
+</style>
