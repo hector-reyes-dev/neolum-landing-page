@@ -133,17 +133,65 @@ import FormField from "../ui/FormField.astro";
   const form = document.querySelector("[data-contact-form]");
   const submitButton = document.querySelector("[data-submit-button]");
   const loadingStatus = document.querySelector("[data-status-loading]");
+  const successStatus = document.querySelector("[data-status-success]");
+  const errorStatus = document.querySelector("[data-status-error]");
 
   if (
     form instanceof HTMLFormElement &&
     submitButton instanceof HTMLButtonElement
   ) {
-    form.addEventListener("submit", () => {
+    const setVisibleStatus = (activeStatus) => {
+      [loadingStatus, successStatus, errorStatus].forEach((statusElement) => {
+        if (statusElement instanceof HTMLElement) {
+          statusElement.classList.add("hidden");
+        }
+      });
+
+      if (activeStatus instanceof HTMLElement) {
+        activeStatus.classList.remove("hidden");
+      }
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
       submitButton.disabled = true;
       submitButton.textContent = "Enviando...";
+      setVisibleStatus(loadingStatus);
 
-      if (loadingStatus instanceof HTMLElement) {
-        loadingStatus.classList.remove("hidden");
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        const result = await response.json().catch(() => null);
+
+        if (!response.ok || !result?.ok) {
+          throw new Error(result?.message ?? "No fue posible enviar el mensaje.");
+        }
+
+        if (successStatus instanceof HTMLElement && result?.message) {
+          successStatus.textContent = result.message;
+        }
+
+        form.reset();
+        setVisibleStatus(successStatus);
+      } catch (error) {
+        if (errorStatus instanceof HTMLElement) {
+          errorStatus.textContent =
+            error instanceof Error && error.message
+              ? error.message
+              : "Ocurrio un error al enviar. Intenta nuevamente.";
+        }
+
+        setVisibleStatus(errorStatus);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Cuéntanos de tu proyecto";
       }
     });
   }

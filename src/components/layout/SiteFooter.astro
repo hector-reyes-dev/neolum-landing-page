@@ -4,7 +4,7 @@ import { contactDetails } from "../../constants/site";
 
 <footer class="bg-[var(--color-primary)] text-white">
   <div
-    class="container-shell grid gap-10 py-10 px-8 sm:py-16 lg:grid-cols-[40%_60%] lg:justify-between lg:gap-0"
+    class="container-shell grid gap-10 px-3 py-10 sm:px-8 sm:py-16 lg:grid-cols-[40%_60%] lg:justify-between lg:gap-0"
   >
     <div class="flex h-full flex-col justify-between gap-10 lg:gap-0 lg:pr-8">
       <div class="flex gap-16 text-[clamp(1.5rem,2vw,1.8rem)] font-bold">
@@ -40,7 +40,12 @@ import { contactDetails } from "../../constants/site";
       </div>
 
       <div class="space-y-1 text-[1.1rem] font-bold text-white">
-        <div class="flex items-center gap-2">
+        <a
+          href={contactDetails.instagramUrl}
+          target="_blank"
+          rel="noreferrer"
+          class="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80 focus-visible:opacity-80"
+        >
           <svg
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -55,8 +60,15 @@ import { contactDetails } from "../../constants/site";
             ></circle>
           </svg>
           <p>{contactDetails.handle}</p>
-        </div>
-        <p>{contactDetails.email}</p>
+        </a>
+        <p>
+          <a
+            href={`mailto:${contactDetails.email}`}
+            class="cursor-pointer transition-opacity hover:opacity-80 focus-visible:opacity-80"
+          >
+            {contactDetails.email}
+          </a>
+        </p>
         <p>{contactDetails.web}</p>
       </div>
     </div>
@@ -64,12 +76,12 @@ import { contactDetails } from "../../constants/site";
     <a
       href="#top"
       aria-label="Volver arriba"
-      class="flex items-end justify-end w-full overflow-hidden"
+      class="flex w-full items-center justify-center overflow-hidden lg:items-end lg:justify-end"
     >
       <img
         src="/assets/LOGO_NEOLUM_PRINCIPAL.svg"
         alt="Logo NEO LUM"
-        class="h-full"
+        class="mx-auto h-full lg:mx-0 lg:max-w-none"
         loading="lazy"
       />
     </a>

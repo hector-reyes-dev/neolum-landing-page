@@ -1,5 +1,6 @@
 ---
 import "../../styles/global.css";
+import { siteConfig } from "../../constants/site";
 
 interface Props {
   title?: string;
@@ -10,6 +11,9 @@ const {
   title = "NEO LUM | Estrategia, identidad y crecimiento",
   description = "Landing page de NEO LUM enfocada en estrategia, identidad y crecimiento de marca.",
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, siteConfig.siteUrl).toString();
+const socialImageUrl = new URL(siteConfig.socialImagePath, siteConfig.siteUrl).toString();
 ---
 
 <!doctype html>
@@ -19,6 +23,17 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       rel="stylesheet"

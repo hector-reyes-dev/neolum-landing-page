@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { Resend } from "resend";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -27,6 +28,9 @@ export const DELETE: APIRoute = async () => methodNotAllowed();
 
 export const POST: APIRoute = async ({ request }) => {
   const contentType = request.headers.get("content-type") ?? "";
+  const resendApiKey = import.meta.env.RESEND_API_KEY;
+  const contactToEmail = import.meta.env.CONTACT_TO_EMAIL;
+  const contactFromEmail = import.meta.env.CONTACT_FROM_EMAIL;
 
   try {
     let payload: Record<string, string> = {};
@@ -71,9 +75,65 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    if (!resendApiKey || !contactToEmail || !contactFromEmail) {
+      console.error("Missing email env vars for contact form.");
+
+      return json(
+        {
+          ok: false,
+          message: "El formulario no esta disponible temporalmente. Intenta nuevamente mas tarde."
+        },
+        500
+      );
+    }
+
+    const resend = new Resend(resendApiKey);
+    const fullName = `${payload.firstName.trim()} ${payload.lastName.trim()}`.trim();
+    const phone = `${payload.countryCode?.trim() ?? "+52"} ${payload.phone.trim()}`.trim();
+    const company = payload.company?.trim() || "No especificada";
+
+    const { error } = await resend.emails.send({
+      from: contactFromEmail,
+      to: [contactToEmail],
+      replyTo: payload.email.trim(),
+      subject: `Nuevo lead desde neolum.com.mx: ${fullName}`,
+      text: [
+        "Nuevo mensaje desde el formulario de contacto de NEO LUM.",
+        "",
+        `Nombre: ${fullName}`,
+        `Correo: ${payload.email.trim()}`,
+        `Empresa: ${company}`,
+        `Telefono: ${phone}`,
+        "",
+        "Mensaje:",
+        payload.message.trim()
+      ].join("\n"),
+      html: `
+        <h2>Nuevo mensaje desde el formulario de NEO LUM</h2>
+        <p><strong>Nombre:</strong> ${fullName}</p>
+        <p><strong>Correo:</strong> ${payload.email.trim()}</p>
+        <p><strong>Empresa:</strong> ${company}</p>
+        <p><strong>Telefono:</strong> ${phone}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p>${payload.message.trim().replace(/\n/g, "<br />")}</p>
+      `
+    });
+
+    if (error) {
+      console.error("Resend error", error);
+
+      return json(
+        {
+          ok: false,
+          message: "No fue posible enviar el mensaje. Intenta nuevamente."
+        },
+        502
+      );
+    }
+
     return json({
       ok: true,
-      message: "Mensaje recibido (placeholder)."
+      message: "Mensaje enviado. Te responderemos pronto."
     });
   } catch {
     return json(

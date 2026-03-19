@@ -19,8 +19,8 @@ import {
 >
   <div class="grid">
     <!-- Row 1: Brand (Left) | Marketing (Right) -->
-    <!-- Image starts on the LEFT, slides RIGHT only when hovering that left quadrant -->
-    <div class="relative grid overflow-hidden md:grid-cols-2">
+    <!-- Image starts on the LEFT, slides RIGHT when hovering the whole row -->
+    <div class="service-row service-row-left relative grid overflow-hidden md:grid-cols-2">
       <!-- T1: Construcción y Evolución de Marca (under image, revealed on hover) -->
       <div
         class="flex flex-col justify-center bg-[var(--color-bg)] px-6 py-10 sm:px-8 md:aspect-square md:px-12"
@@ -61,10 +61,8 @@ import {
         </ul>
       </div>
 
-      <!-- IMG 1: positioned on the LEFT, only triggers on hovering itself -->
       <figure
-        data-service-img="row1"
-        class="absolute inset-y-0 left-0 hidden w-1/2 translate-x-0 cursor-default transition-transform duration-700 ease-in-out md:block"
+        class="service-row-image absolute inset-y-0 left-0 hidden w-1/2 translate-x-0 cursor-default md:block"
       >
         <img
           src="/assets/images/servicios-11x.webp"
@@ -85,9 +83,8 @@ import {
     </div>
 
     <!-- Row 2: Web (Left) | Strategy (Right) -->
-    <!-- Image starts on the RIGHT, slides LEFT only when hovering that right quadrant -->
     <div
-      class="relative grid overflow-hidden md:grid-cols-2 border-t border-[var(--color-primary)]/10"
+      class="service-row service-row-right relative grid overflow-hidden border-t border-[var(--color-primary)]/10 md:grid-cols-2"
     >
       <!-- T3: Presencia Web y Digital (always visible) -->
       <div
@@ -129,10 +126,8 @@ import {
         </ul>
       </div>
 
-      <!-- IMG 2: positioned on the RIGHT, only triggers on hovering itself -->
       <figure
-        data-service-img="row2"
-        class="absolute inset-y-0 right-0 hidden w-1/2 translate-x-0 cursor-default transition-transform duration-700 ease-in-out md:block"
+        class="service-row-image absolute inset-y-0 right-0 hidden w-1/2 translate-x-0 cursor-default md:block"
       >
         <img
           src="/assets/images/servicios-21x.webp"
@@ -154,26 +149,19 @@ import {
   </div>
 </SectionContainer>
 
-<script is:inline>
-  // Hover only fires when cursor is over the figure (the image quadrant)
-  const img1 = document.querySelector('[data-service-img="row1"]');
-  const img2 = document.querySelector('[data-service-img="row2"]');
-
-  if (img1) {
-    img1.addEventListener("mouseenter", () => {
-      img1.style.transform = "translateX(100%)";
-    });
-    img1.addEventListener("mouseleave", () => {
-      img1.style.transform = "translateX(0%)";
-    });
+<style>
+  .service-row-image {
+    transition: transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
   }
 
-  if (img2) {
-    img2.addEventListener("mouseenter", () => {
-      img2.style.transform = "translateX(-100%)";
-    });
-    img2.addEventListener("mouseleave", () => {
-      img2.style.transform = "translateX(0%)";
-    });
+  @media (hover: hover) and (min-width: 48rem) {
+    .service-row-left:hover .service-row-image {
+      transform: translateX(100%);
+    }
+
+    .service-row-right:hover .service-row-image {
+      transform: translateX(-100%);
+    }
   }
-</script>
+</style>

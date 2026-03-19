@@ -16,14 +16,14 @@ const slides = [
   flushMobile={true}
 >
   <div class="relative grid overflow-hidden bg-white lg:grid-cols-[58%_42%]">
-    <div class="flex items-center bg-white px-4 py-8 sm:px-8 sm:py-10">
+    <div class="flex items-center bg-white px-4 py-4 sm:px-8 sm:py-5">
       <div>
         <h1
           class="text-balance text-[clamp(3.6rem,10vw,10rem)] font-bold leading-[0.88] text-[var(--color-primary)]"
         >
           Estrategia, identidad y crecimiento.
         </h1>
-        <div class="space-y-4 text-[1.6rem] leading-[1.28] text-black">
+        <div class="space-y-2 text-[1.6rem] leading-[1.28] text-black">
           <p>
             En <span class="font-bold text-[var(--color-primary)]">NEO LUM</span
             >, ayudamos a empresas a destacar en un mercado saturado.
@@ -36,7 +36,7 @@ const slides = [
         </div>
         <a
           href="#contacto"
-          class="inline-flex items-center justify-center mt-8 rounded-full bg-[var(--color-primary)] px-12 py-6 text-2xl font-semibold text-white transition-opacity hover:opacity-90"
+          class="mt-4 inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-12 py-4 text-2xl font-semibold text-white transition-opacity hover:opacity-90"
         >
           Contáctanos
         </a>
@@ -44,21 +44,10 @@ const slides = [
     </div>
 
     <div class="slider-wrapper min-h-[55vw] overflow-hidden lg:min-h-0">
-      <div class="slider relative h-full overflow-hidden bg-white">
-        {
-          slides.map((_, index) => (
-            <input
-              type="radio"
-              name="hero-slider"
-              id={`slide-${index}`}
-              class="slide-input sr-only"
-              checked={index === 0}
-            />
-          ))
-        }
-
+      <div class="slider relative h-full overflow-hidden bg-white" data-hero-slider>
         <div
           class="slider-track flex h-full transition-transform duration-500 ease-out"
+          data-hero-track
         >
           {
             slides.map((slide, index) => (
@@ -79,10 +68,13 @@ const slides = [
         >
           {
             slides.map((_, index) => (
-              <label
-                for={`slide-${index}`}
+              <button
+                type="button"
                 class="slide-dot size-2.5 cursor-pointer rounded-full border transition-colors"
                 aria-label={`Ir al slide ${index + 1}`}
+                aria-pressed={index === 0 ? "true" : "false"}
+                data-hero-dot
+                data-slide-index={index}
               />
             ))
           }
@@ -100,18 +92,43 @@ const slides = [
   </div>
 </SectionContainer>
 
+<script is:inline>
+  const slider = document.querySelector("[data-hero-slider]");
+
+  if (slider instanceof HTMLElement) {
+    const track = slider.querySelector("[data-hero-track]");
+    const dots = Array.from(slider.querySelectorAll("[data-hero-dot]"));
+
+    const setActiveSlide = (index) => {
+      if (!(track instanceof HTMLElement)) {
+        return;
+      }
+
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach((dot, dotIndex) => {
+        if (dot instanceof HTMLButtonElement) {
+          dot.setAttribute("aria-pressed", dotIndex === index ? "true" : "false");
+        }
+      });
+    };
+
+    dots.forEach((dot) => {
+      if (dot instanceof HTMLButtonElement) {
+        dot.addEventListener("click", () => {
+          const index = Number(dot.dataset.slideIndex ?? 0);
+          setActiveSlide(index);
+        });
+      }
+    });
+
+    setActiveSlide(0);
+  }
+</script>
+
 <style>
-  .slider-wrapper:has(#slide-0:checked) .slider-track {
-    transform: translateX(0%);
-  }
-  .slider-wrapper:has(#slide-1:checked) .slider-track {
-    transform: translateX(-100%);
-  }
-  .slider-wrapper:has(#slide-2:checked) .slider-track {
-    transform: translateX(-200%);
-  }
-  .slider-wrapper:has(#slide-3:checked) .slider-track {
-    transform: translateX(-300%);
+  .slider-track {
+    will-change: transform;
   }
 
   .slide-dot {
@@ -129,10 +146,7 @@ const slides = [
     }
   }
 
-  .slider-wrapper:has(#slide-0:checked) label[for="slide-0"],
-  .slider-wrapper:has(#slide-1:checked) label[for="slide-1"],
-  .slider-wrapper:has(#slide-2:checked) label[for="slide-2"],
-  .slider-wrapper:has(#slide-3:checked) label[for="slide-3"] {
+  .slide-dot[aria-pressed="true"] {
     background-color: var(--color-white);
     border-color: var(--color-white);
   }

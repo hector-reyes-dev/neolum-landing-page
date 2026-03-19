@@ -6,6 +6,12 @@ export const navLinks = [
   { label: "Contacto", href: "#contacto" }
 ] as const;
 
+export const siteConfig = {
+  name: "NEO LUM",
+  siteUrl: "https://www.neolum.com.mx",
+  socialImagePath: "/assets/neolum-social-share.png"
+} as const;
+
 export const brandServices = [
   "Desarrollo de Identidad Visual",
   "Rebranding y Evolución de Marca",
@@ -31,7 +37,8 @@ export const strategyServices = [
 
 export const contactDetails = {
   handle: "@neolum.con",
+  instagramUrl: "https://instagram.com/neolum.con",
   email: "neolum.consultoria@gmail.com",
-  web:"www.NeoLum.com",
+  web: "www.neolum.com.mx",
   address: "Ciudad de Mexico, Mexico"
 } as const;

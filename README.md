@@ -17,6 +17,16 @@ pnpm build
 pnpm preview
 ```
 
+## 🔐 Variables de entorno
+
+Para habilitar el envío del formulario de contacto con Resend:
+
+```sh
+RESEND_API_KEY=your_resend_api_key
+CONTACT_TO_EMAIL=neolum.consultoria@gmail.com
+CONTACT_FROM_EMAIL=contacto@neolum.com.mx
+```
+
 ## 📁 Estructura
 
 ```
@@ -46,6 +56,6 @@ El sitio esta optimizado para:
 
 ## 🌐 Despliegue
 
-El proyecto esta configurado para desplegarse en cualquier hosting estatico (Vercel, Netlify, etc.).
+El proyecto usa Astro con una ruta server-side para `/api/contact`, así que el despliegue debe soportar funciones/SSR para procesar el formulario.
 
 Repositorio: https://github.com/hector-reyes-dev/neolum-landing-page
