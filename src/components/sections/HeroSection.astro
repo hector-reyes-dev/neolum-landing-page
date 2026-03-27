@@ -43,7 +43,7 @@ const slides = [
       </div>
     </div>
 
-    <div class="slider-wrapper min-h-[55vw] overflow-hidden lg:min-h-0">
+    <div class="slider-wrapper min-h-[55vw] cursor-pointer overflow-hidden lg:min-h-0">
       <div class="slider relative h-full overflow-hidden bg-white" data-hero-slider>
         <div
           class="slider-track flex h-full transition-transform duration-500 ease-out"
@@ -98,12 +98,15 @@ const slides = [
   if (slider instanceof HTMLElement) {
     const track = slider.querySelector("[data-hero-track]");
     const dots = Array.from(slider.querySelectorAll("[data-hero-dot]"));
+    let currentIndex = 0;
+    const totalSlides = dots.length;
 
     const setActiveSlide = (index) => {
       if (!(track instanceof HTMLElement)) {
         return;
       }
 
+      currentIndex = index;
       track.style.transform = `translateX(-${index * 100}%)`;
 
       dots.forEach((dot, dotIndex) => {
@@ -120,6 +123,11 @@ const slides = [
           setActiveSlide(index);
         });
       }
+    });
+
+    slider.addEventListener("click", (e) => {
+      if (e.target instanceof Element && e.target.closest("[data-hero-dot]")) return;
+      setActiveSlide((currentIndex + 1) % totalSlides);
     });
 
     setActiveSlide(0);

@@ -1,5 +1,6 @@
 ---
 import SectionContainer from "../layout/SectionContainer.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
 ---
 
 <section
@@ -7,6 +8,9 @@ import SectionContainer from "../layout/SectionContainer.astro";
   aria-label="Seccion de proceso"
   class="bg-[var(--color-bg)]"
 >
+  <div class="md:hidden">
+    <SectionTitle title="Proceso" />
+  </div>
   <SectionContainer isContent={true} flushMobile={true}>
     <div class="group/process relative overflow-hidden" data-process-container>
       <!-- Block 1: Fundación, Desarrollo, Gestión -->
